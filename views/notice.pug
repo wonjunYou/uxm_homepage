@@ -1,0 +1,76 @@
+extends layout
+
+block content
+    style.
+        .pagination {
+        list-style-type : none;
+        padding:0;
+        margin :0 auto;
+        text-align:center;
+        }
+        .pagination > li{
+        display : inline;
+        }
+    script.
+      -function Noti(num, tit, dt, wr, show, file){
+        this.num= num;
+        this.tit= tit;
+        this.dt= dt;
+        this.wr= wr;
+        this.show= show;
+        this.file= file;
+      }
+      -var notices= [];
+      -notices.push(new Noti(1,"UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
+      -notices.push(new Noti(1,"UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
+      -notices.push(new Noti(1,"UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
+      -notices.push(new Noti(1,"UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
+    .wrapper
+      h1= title
+      #main.container
+        // Content
+        article#content
+          header
+            #main.container
+              header.
+            table.table.table-striped(style="font-size:10px;text-align:center; ")
+              thead(style="border-bottom: 1px solid gray;border-top: 1px solid gray")
+                tr
+                  th(width="3%")
+                  th(width="50%") 제목
+                  th(width="14%") 작성일
+                  th(width="14%") 작성자
+                  th(width="12%") 조회수
+                  th(width="7%") 첨부
+              tbody
+                -for (var i=0; i<4; i++)
+                  tr
+                  -for ( k in notices[i])
+                    -if (k)
+                      td= k
+                    -else
+                      td= 1
+                  //- td= num
+                  //- td UXM 홈페이지에 오신 것을 환영합니다
+                  //- td 2020-12-05
+                  //- td 관리자
+                  //- td 102
+                  //- td O
+                
+                
+                                               
+            ul.pagination
+              li
+                a(href="#") prev
+              li
+                a(href="#") 1
+              li
+                a(href="#") 2
+              li
+                a(href="#") 3
+              li
+                a(href="#") 4
+              li
+                a(href="#") 5
+              li
+                a(href="#") next

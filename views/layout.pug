@@ -1,7 +1,53 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+head
+  title UXMedia
+    block title
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+  meta(name='description' content='{% 명지대학교 UX Media lab, 지도교수 : 김상균')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  script(defer='' src='https://use.fontawesome.com/releases/v5.2.0/js/all.js') 
+  script(src="/javascripts/jquery.min.js")
+  script(src="/javascripts/jquery.dropotron.min.js")
+  script(src="/javascripts/browser.min.js")
+  script(src="/javascripts/breakpoints.min.js")
+  script(src="/javascripts/util.js")
+  script(src="/javascripts/main.js")
+  script(src="/javascripts/slideshow.js")
+#page-wrapper
+  // Header
+  #header-wrapper
+    #header.container
+      // Logo
+      h1#logo
+        a(href='/') UX Media
+      // Nav
+      nav#nav
+        ul
+          li
+            a(href='{% url ') Members
+          li
+            a(href='/project') Project
+          li.break
+            a(href='/publication') Publication
+          li
+            a(href='#') Board
+            ul
+              li
+                a(href='/notice') Notice
+              li
+                a(href='/photo') Photo
+    block main
+    section#head-title
+      block headtitle
+  block content
+  footer.container
+    block comment
+    .contact
+      ul
+        li 서울특별시 서대문구 거북골로 34 명지대학교
+          i.fas.fa-map-marker-alt.fa-sm
+        li (+82) 02-123-4567
+          i.fas.fa-phone-volume.fa-sm
+        li abc@mju.ac.kr
+          i.far.fa-envelope.fa-sm

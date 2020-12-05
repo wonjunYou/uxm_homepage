@@ -1,0 +1,32 @@
+extends layout
+block title Publication
+block headtitlePublication
+block content
+.__wrapper
+  main.__container
+    each paper_row in paper_table
+      if paper_row.is_latest
+        section.paper-container
+      else
+        section.paper-dropdown
+      header.paper-year
+        h2 paper_row.year_data
+        .paper-dropdown-icon
+          i.fas.fa-angle-up
+      hr
+      section.journal-papers
+        header
+          h3 Journal
+        each paper in paper_row.journal_paper_list
+          article.paper
+            h4.paper_title paper.title
+            p.paper_author paper.author
+            p.paper_publication_data paper.publication_data
+      section.conference-papers
+        header
+          h3 Conference
+        each paper in paper_row.conference_paper_list
+          article.paper
+            h4.paper_title paper.title
+            p.paper_author paper.author
+            p.paper_publication_data paper.publication_data

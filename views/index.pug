@@ -3,3 +3,50 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  .col-12-narrower.slideshow-container
+    .slides.fade
+      img(src="../public/images/slideshow1.jpg")
+      .text
+    .slides.fade
+      img(src="../public/images/slideshow2.jpg")
+      .text
+    .slides.fade
+      img(src="../public/images/slideshow3.jpg")
+      .text
+  br
+  // under dots
+  div(style='text-align:center')
+    span.dot
+    span.dot
+    span.dot
+  article#content
+    header
+      h2 Introduction
+      p
+        | UX Media Lab : Introduction and simple welcoming writings.
+    p
+      | Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus,
+      | sapien mollis luctus hendrerit, orci dui viverra metus, et cursus nulla
+      | mi sed elit. Vestibulum condimentum, mauris a mattis vestibulum, urna
+      | mauris cursus lorem, eu fringilla lacus ante non est. Nullam vitae
+      | feugiat libero, eu consequat sem. Proin tincidunt neque eros. Duis
+      | faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et
+      | turpis vel blandit. Nullam ornare congue massa, at commodo nunc
+      | venenatis varius. Praesent mollis nisi at vestibulum aliquet. Sed
+      | sagittis congue urna ac consectetur.
+    p
+      | Mauris eleifend eleifend felis aliquet ornare. Vestibulum porta velit at
+      | elementum gravida nibh eget, volutpat odio. Proin rhoncus, sapien mollis
+      | luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit.
+      | Vestibulum condimentum, mauris a mattis vestibulum, urna mauris cursus
+      | lorem, eu fringilla lacus ante non est. Nullam vitae feugiat libero, eu
+      | consequat sem. Proin tincidunt neque eros. Duis faucibus blandit ligula,
+      | mollis commodo risus sodales at. Sed rutrum et turpis vel blandit.
+      | Nullam ornare congue massa, at commodo nunc venenatis varius. Praesent
+      | mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac
+      | consectetur.
+    p
+      | Vestibulum pellentesque posuere lorem non aliquam. Mauris eleifend
+      | eleifend felis aliquet ornare. Vestibulum porta velit at elementum
+      | elementum.
