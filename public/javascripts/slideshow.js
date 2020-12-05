@@ -1,5 +1,5 @@
 var slideIndex = 0;
-showSlides();
+window.onload = showSlides;
 
 function showSlides() {
     var i;

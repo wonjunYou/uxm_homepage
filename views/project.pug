@@ -4,9 +4,10 @@ block content
     //- | {% block headtitle %}Project{% endblock headtitle %}
     //- | {% block content %}
     .wrapper
-      h1= title
       #main.container
         // Content
+        header.memberTitle
+          h2= title
         article#content
           header
             p 국책 과제 (Government funded projects)
