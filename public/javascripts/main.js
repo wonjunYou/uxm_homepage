@@ -62,3 +62,12 @@
 // 		zoom:8
 // 	});
 // }
+
+// photo.pug
+$('.photo-container').magnificPopup({
+	delegate: 'a',
+	type: 'image',
+	gallery: {
+		enabled: true,
+	},
+});
