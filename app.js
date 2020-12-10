@@ -14,6 +14,13 @@ var publicationRouter = require('./routes/publication');
 var projectRouter = require('./routes/project');
 var app = express();
 
+//mongodb 연결
+const mongoose = require('mongoose');
+const connection_string = "mongodb+srv://uxm_admin:uxm572127@cluster0.ye6no.mongodb.net/uxmedia?retryWrites=true&w=majority"
+mongoose.connect(connection_string, {useNewUrlParser: true});
+const db = mongoose.connection;
+db.on('error', console.error);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
