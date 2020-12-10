@@ -1,49 +1,49 @@
 extends layout
+block headtitle
+  h2 Photo
 block content
   .wrapper
     main.container
-      article.gallery
-        h2 제목입니다.
-        .popup-gallery
-          a.image(href='/images/1.jpg')
-            img(src='/images/1.jpg' alt='테스트')
-            .photo_description 더 보기
-          a.image(href='/images/2.jpg')
-            img(src='/images/2.jpg' alt='테스트')
-          a.image(href='/images/3.jpg')
-            img(src='/images/3.jpg' alt='테스트')
-          a.image(href='/images/4.jpg')
-            img(src='/images/4.jpg' alt='테스트')
-          a.image(href='/images/5.jpg')
-            img(src='/images/5.jpg' alt='테스트')
-          a.image(href='/images/6.jpg')
-            img(src='/images/6.jpg' alt='테스트')
-          a.image(href='/images/7.jpg')
-            img(src='/images/7.jpg' alt='테스트')
-          a.image(href='/images/8.jpg')
-            img(src='/images/8.jpg' alt='테스트')
-      article.gallery
-        h2 제목2
-        .popup-gallery
-          a.image(href='/images/1.jpg')
-            img(src='/images/1.jpg' alt='테스트')
-          a.image(href='/images/2.jpg')
-            img(src='/images/2.jpg' alt='테스트')
-          a.image(href='/images/3.jpg')
-            img(src='/images/3.jpg' alt='테스트')
-          a.image(href='/images/4.jpg')
-            img(src='/images/4.jpg' alt='테스트')
-          a.image(href='/images/5.jpg')
-            img(src='/images/5.jpg' alt='테스트')
-          a.image(href='/images/6.jpg')
-            img(src='/images/6.jpg' alt='테스트')
-          a.image(href='/images/7.jpg')
-            img(src='/images/7.jpg' alt='테스트')
-          a.image(href='/images/8.jpg')
-            img(src='/images/8.jpg' alt='테스트')
-          a.image(href='/images/20200806_workshop.jpg')
-            img(src='/images/20200806_workshop.jpg' alt='테스트')
-          a.image(href='/images/20200716_deeplearning.jpg')
-            img(src='/images/20200716_deeplearning.jpg' alt='테스트')
-          a.image(href='/images/20200716_deeplearning.jpg')
-            img(src='/images/20200716_deeplearning.jpg' alt='테스트')
+      nav.sub_menu
+        ul
+          li
+            a.on(href="#") 2020
+          li
+            a(href="#") 2019
+          li
+            a(href="#") 2018
+          li
+            a(href="#") 이전
+      section.content
+        ul.thumbnail
+          each val in [1,2,3,4,5,6,7,8,9,10,11,12]
+            li
+              a(href="/photo_detail")
+                img(src="images/"+val+".jpg", alt="")
+                h4.thumbnail_title= '제목'+val
+                if val < 10
+                  p.thumbnail_date='20.0'+val+'.0'+val
+                else 
+                  p.thumbnail_date='20.'+val+'.'+val
+      section.paging
+        ol.paging_btn
+          li.first_page
+            a(href="#")
+              i.fas.fa-angle-double-left
+          li.prev_page
+            a(href="#")
+              i.fas.fa-angle-left
+          - let num = 3
+          each i in [num-2,num-1,num,num+1,num+2]
+            if (i != num)
+              li
+                a(href="")= i
+            else
+              li.page_on
+                a(href="")= i
+          li.next_page
+            a(href="#")
+              i.fas.fa-angle-right
+          li.last_page
+            a(href="#")
+              i.fas.fa-angle-double-right
