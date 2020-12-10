@@ -12,20 +12,6 @@ block content
         display : inline;
         }
     
-    //- script.
-    //-   -function Noti(num, tit, dt, wr, show, file){
-    //-     this.num= num;
-    //-     this.tit= tit;
-    //-     this.dt= dt;
-    //-     this.wr= wr;
-    //-     this.show= show;
-    //-     this.file= file;
-    //-   }
-    //-   -var notices= [];
-    //-   -notices.push(new Noti("1","UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
-    //-   -notices.push(new Noti("2","UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
-    //-   -notices.push(new Noti("3","UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
-    //-   -notices.push(new Noti("4","UXM에 오신 것을 환영합니다.", "2020-12-09","관리자",103,true));
     .wrapper
       
       #main.container
@@ -44,13 +30,13 @@ block content
                   th(width="12%") 조회수
                   th(width="7%") 첨부
               tbody
-                -for (var i=0; i<10; i++)
+                -for (var i=0; i<notice.length; i++)
                   tr
                     td= i+1
                     td
-                      a(href="/notice/show/"+this.url) UXM 홈페이지에 오신 것을 환영합니다
-                    td 2020-12-05
-                    td 관리자
+                      a(href="/notice/show/"+notice[i]._id)= notice[i].title
+                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDay()+6}`
+                    td= notice[i].writer
                     td 102
                     td O
                   

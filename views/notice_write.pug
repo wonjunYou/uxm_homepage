@@ -11,7 +11,7 @@ block content
         .pagination > li{
         display : inline;
         }
-        #submit{
+        #submits{
             display: block;
             margin:0 auto;
             padding:0 auto;
@@ -46,12 +46,12 @@ block content
               p Notice
               h2 공지사항 작성
             hr
-            form
-                input(type="text" value="공지사항 제목을 입력해주세요")
+            form(action="/notice/notice/write" method="post")
+                input(name="title" type="text" value="공지사항 제목을 입력해주세요")
                 hr
-                textarea(id="cont" ) 공지사항 내용을 입력해주세요!
+                textarea(name="content" id="cont" ) 공지사항 내용을 입력해주세요!
                 br
                 .col-12
                     input(width=100 type="file" name="file" accept="image/*")
                 br
-                button.btn(id="submit" onclick="location.href='/notice'") Submit
+                button.btn(id="submits" type="submit" onclick="location.href='/notice'") Submit
