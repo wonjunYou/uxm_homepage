@@ -1,0 +1,57 @@
+extends layout
+
+block content
+    style.
+        .pagination {
+        list-style-type : none;
+        padding:0;
+        margin :0 auto;
+        text-align:center;
+        }
+        .pagination > li{
+        display : inline;
+        }
+        #submit{
+            display: block;
+            margin:0 auto;
+            padding:0 auto;
+        }
+        input[type="text"]{
+            display:inline;
+        }
+        input[type="file"]{
+            margin:0 auto;
+        }
+        input[type="text"],textarea{
+            weight:100%;
+            overflow:scroll;
+        }
+        h1 {
+            display:inline;
+            
+        }
+        #cont {
+            
+            height:400px;
+            font-size:18px;
+            color:gray;
+            
+        }
+    .wrapper
+      #main.container
+        // Content
+        article#content
+            #main.container
+            header.memberTitle
+              p Notice
+              h2 공지사항 작성
+            hr
+            form
+                input(type="text" value="공지사항 제목을 입력해주세요")
+                hr
+                textarea(id="cont" ) 공지사항 내용을 입력해주세요!
+                br
+                .col-12
+                    input(width=100 type="file" name="file" accept="image/*")
+                br
+                button.btn(id="submit" onclick="location.href='/notice'") Submit
