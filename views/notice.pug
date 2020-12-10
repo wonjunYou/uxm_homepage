@@ -11,6 +11,7 @@ block content
         .pagination > li{
         display : inline;
         }
+    
     //- script.
     //-   -function Noti(num, tit, dt, wr, show, file){
     //-     this.num= num;
@@ -46,7 +47,8 @@ block content
                 -for (var i=0; i<10; i++)
                   tr
                     td= i+1
-                    td UXM 홈페이지에 오신 것을 환영합니다
+                    td
+                      a(href="/notice/show/"+this.url) UXM 홈페이지에 오신 것을 환영합니다
                     td 2020-12-05
                     td 관리자
                     td 102
@@ -69,3 +71,6 @@ block content
                 a(href="#") 5
               li
                 a(href="#") next
+
+            button.btn(onclick="location.href='/notice/write'") 글쓰기
+
