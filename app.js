@@ -21,6 +21,7 @@ mongoose.connect(connection_string, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error);
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

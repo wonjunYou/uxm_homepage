@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    style.
+        .pagination {
+        list-style-type : none;
+        padding:0;
+        margin :0 auto;
+        text-align:center;
+        }
+        .pagination > li{
+        display : inline;
+        }
+
+    .wrapper
+      #main.container
+        // Content
+        article#content
+            #main.container
+            header.memberTitle
+              p Notice
+              h2= notice.title
+              
+            p.text-center= notice.content
+            
+            button.btn(onclick=`location.href='/notice/edit/${notice._id}`) 수정
+            button.btn 삭제
