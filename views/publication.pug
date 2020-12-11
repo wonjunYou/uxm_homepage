@@ -1,32 +1,31 @@
 extends layout
-block title Publication
-block headtitlePublication
+block headtitle
+  h2 Publication
 block content
-.__wrapper
-  main.__container
-    each paper_row in paper_table
-      if paper_row.is_latest
-        section.paper-container
-      else
-        section.paper-dropdown
-      header.paper-year
-        h2 paper_row.year_data
-        .paper-dropdown-icon
-          i.fas.fa-angle-up
-      hr
-      section.journal-papers
-        header
-          h3 Journal
-        each paper in paper_row.journal_paper_list
-          article.paper
-            h4.paper_title paper.title
-            p.paper_author paper.author
-            p.paper_publication_data paper.publication_data
-      section.conference-papers
-        header
-          h3 Conference
-        each paper in paper_row.conference_paper_list
-          article.paper
-            h4.paper_title paper.title
-            p.paper_author paper.author
-            p.paper_publication_data paper.publication_data
+  .wrapper
+    main.container
+      nav.sub_menu
+        ul
+          li
+            a.on(href="#") 해외학술지
+          li
+            a(href="#") 해외학회발표
+          li
+            a(href="#") 국내학술지
+          li
+            a(href="#") 국내학회발표
+      section.content
+        table.p_content
+          thead
+            tr
+              th Author
+              th Title
+              th Journal/Confernce
+          tbody
+            each val in [1,2,3,4,5,6,7,8]
+              tr
+                td= '논문 저자'+ val
+                td= '논문 제목'+ val
+                td 어디어디학술지
+                  a(href='#')
+                    i.fas.fa-info-circle
