@@ -1,5 +1,6 @@
 extends layout
-
+block headtitle
+  h2 Notice
 block content
     style.
         .pagination {
@@ -11,15 +12,14 @@ block content
         .pagination > li{
         display : inline;
         }
-    
+    script.
+      
     .wrapper
       
       #main.container
         // Content
         article#content
             #main.container
-            header.memberTitle
-              h2= title
             table.table.table-striped(style="font-size:10px;text-align:center; ")
               thead(style="border-bottom: 1px solid gray;border-top: 1px solid gray")
                 tr
@@ -28,35 +28,33 @@ block content
                   th(width="14%") 작성일
                   th(width="14%") 작성자
                   th(width="12%") 조회수
-                  th(width="7%") 첨부
+                  
               tbody
                 -for (var i=0; i<notice.length; i++)
-                  tr
+                  tr(onclick=`${notice[i].views++}`)
                     td= i+1
                     td
                       a(href="/notice/show/"+notice[i]._id)= notice[i].title
-                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDay()+6}`
+                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
                     td= notice[i].writer
-                    td 102
-                    td O
+                    td= notice[i].views
+                    
                   
-                
-                                               
-            ul.pagination
-              li
-                a(href="#") prev
-              li
-                a(href="#") 1
-              li
-                a(href="#") 2
-              li
-                a(href="#") 3
-              li
-                a(href="#") 4
-              li
-                a(href="#") 5
-              li
-                a(href="#") next
-
+            //- ul.pagination
+            //-   li.page-item 
+            //-     a.page-link(href="#") prev
+            //-   li.page-item 
+            //-     a.page-link(href="#") 1
+            //-   li.page-item 
+            //-     a.page-link(href="#") 2
+            //-   li.page-item 
+            //-     a.page-link(href="#") 3
+            //-   li.page-item 
+            //-     a.page-link(href="#") 4 
+            //-   li.page-item 
+            //-     a.page-link(href="#") 5
+            //-   li.page-item 
+            //-     a.page-link(href="#") next
+            
             button.btn(onclick="location.href='/notice/write'") 글쓰기
 

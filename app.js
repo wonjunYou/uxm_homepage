@@ -22,6 +22,7 @@ const db = mongoose.connection;
 db.on('error', console.error);
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -40,6 +41,15 @@ app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
 app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
+
+//첨부파일
+app.use(function(req,res,next){
+	res.locals.isAuthenticated = req.isAuthenticated();
+	res.locals.currentUser = req.user;
+	res.locals.util = util;
+	next();
+})
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404));

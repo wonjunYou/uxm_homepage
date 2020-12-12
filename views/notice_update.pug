@@ -44,12 +44,13 @@ block content
         article#content
             #main.container
             header.memberTitle
+        
               h2 공지사항 작성
             hr
-            form(action="/notice/notice/write"  method="post")
-                input(name="title" type="text" value="공지사항 제목을 입력해주세요")
+            form(action=`./${notice._id}` method="post")
+                input(name="title" type="text" value=`${notice.title}`)
                 hr
-                textarea(name="content" id="cont" ) 공지사항 내용을 입력해주세요!
+                textarea(name="content" id="cont" )= `${notice.content}`
                 br
                 //- .col-12
                 //-     input(width=100 type="file" name="attachment" accept="image/*")
