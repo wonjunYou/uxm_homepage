@@ -63,3 +63,13 @@
 // 	});
 // }
 
+$(document).ready(function () {
+	$('#nav > ul > li').hover(
+		function () {
+			$(this).children('ul').css('visibility', 'visible');
+		},
+		function () {
+			$(this).children('ul').css('visibility', 'none');
+		}
+	);
+});
