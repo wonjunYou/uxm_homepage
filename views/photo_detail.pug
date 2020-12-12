@@ -4,7 +4,12 @@ block headtitle
 block content
   .wrapper
     main.container
-      article.gallery
+      section.p_info
+        header
+          h2 제목1
+          p 20.01.01
+        p 어쩌구저쩌구
+      section.gallery
         .popup-gallery.detail
           a.image(href='/images/20200716_deeplearning.jpg')
             img(src='/images/20200716_deeplearning.jpg' alt='테스트')
@@ -23,3 +28,5 @@ block content
             img(src='/images/slideshow3.jpg' alt='테스트')
           a.image(href='/images/13.jpg')
             img(src='/images/13.jpg' alt='테스트')
+      section.back
+        input(type='button' value='돌아가기' onclick='history.back(-1);')
