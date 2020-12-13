@@ -2029,7 +2029,6 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			color: #f35858;
 			border-color: rgba(243, 88, 88, 0.5);
 		}
 
@@ -2075,7 +2074,7 @@ input, select, textarea {
 		position: relative;
 		background: #fff;
 		overflow-x: hidden;
-		padding: 6em 0 6em 0;
+		padding: 5em 0 5em 0;
 	}
 
 	.image-wrapper {
@@ -2175,9 +2174,17 @@ input, select, textarea {
 
 			#nav > ul > li {
 				display: inline-block;
-				margin-left: 1em;
 				vertical-align: top;
-			}
+      }
+
+      #nav > ul > li:not(.sign_in){
+        margin-left: 1em;
+      }
+      
+      .sign_in{
+        float:right;
+        font-size:1em;
+      }
 			
 			/* #nav > ul  ul {
 				display: none;
@@ -2274,11 +2281,11 @@ input, select, textarea {
 				} */
 
 				#nav > ul > li:first-child {
-					margin-left: 0;
+					margin-left: 3.5em;
 				}
 
 				#nav > ul > li.break {
-					margin-left: 20em;
+          margin-left: 19em;
 				}
 
 	.dropotron {
@@ -3347,13 +3354,13 @@ footer ul{
 
 .login_label {
 	display: flex;
-	width: 60%;
-	padding: 12px 20px;
-	margin: 0 auto;
+	width: 50%;
+  padding: 18px 5px;
+  margin : 0;
 }
 
 .login_text {
-	width: 60%;
+	width: 50%;
 	padding: 12px 20px;
 	margin: 0 auto;
 	display: flex;
@@ -3362,7 +3369,11 @@ footer ul{
 	box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .n_writebtn,
+=======
+
+>>>>>>> 1e83d3541bb714e239e5d8ad444214606518750c
 .cancelbtn,
 .loginbtn {
 	background-color: #86BF3E;
@@ -3385,10 +3396,10 @@ footer ul{
 }
 
 .loginbtn {
-	width: 60%;
+	width: 80%;
 	display: flex;
 	justify-content: center;
-	margin: 2em auto;
+  margin: 3em auto 2.5em auto;
 }
 .n_writebtn{
 	margin-left:10px;
@@ -3397,8 +3408,8 @@ footer ul{
 
 #login_title {
 	display: flex;
-	justify-content: center;
-	margin-top: 3em;
+  justify-content: center;
+  padding-bottom: 1em;
 }
 
 .login_container {
@@ -3407,13 +3418,8 @@ footer ul{
 }
 
 .inner_container {
-	width: 60%;
+	width: 50%;
 	margin: 0 auto;
-}
-
-span.pw {
-	float: right;
-	padding-top: 16px;
 }
 
 @media screen and (max-width: 300px) {
