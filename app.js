@@ -11,6 +11,7 @@ var noticeRouter = require('./routes/notice');
 var photoRouter = require('./routes/photo');
 var photoDetailRouter = require('./routes/photo_detail');
 var publicationRouter = require('./routes/publication');
+var publicationDetailRouter = require('./routes/publication_detail');
 var projectRouter = require('./routes/project');
 var signInRouter = require('./routes/signin');
 var app = express();
@@ -41,6 +42,7 @@ app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
 app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
+app.use('/publication_detail', publicationDetailRouter);
 app.use('/signin', signInRouter);
 
 //첨부파일
