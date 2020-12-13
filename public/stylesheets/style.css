@@ -2029,7 +2029,7 @@ input, select, textarea {
 		input[type="reset"]:hover,
 		button:hover,
 		.button:hover {
-			border-color: rgba(243, 88, 88, 0.5);
+			border-color: var(--primary-color);
 		}
 
 /* Icons */
@@ -3345,6 +3345,51 @@ footer ul{
 	overflow-x: hidden;
 	padding: 6em 0 6em 0;
 }
+
+.pub_info {
+	margin:0 0 2em 0;
+	padding:0;
+}
+.pub_info header p{
+	font-size: 1.5em;
+	padding: 0;
+	margin: 0;
+}
+.pub_info header h2{
+	font-size: 2em;
+	padding: 0.5em 0 0 0;
+	margin: 0;
+	font-weight: bolder;
+}
+.pub_info header h3{
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+	font-weight: lighter;
+}
+
+.pub_info main .pub_info_box {
+	display: flex;
+	justify-content: flex-end;
+	border: 1px solid var(--group-border);
+	background-color: rgba(128, 128, 128, 0.15);
+}
+.pub_info main .pub_info_box .pub_info_text {
+	width: 100%;
+}
+.pub_info main .pub_info_box .pub_download{
+	display: flex;
+	align-items: center;
+}
+.pub_info main .pub_info_box .pub_download a{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: max-content;
+}
+.pub_abstract {
+	margin-top: 1.5em;
+}
 /* Login */
 .login_form {
 	border: 3px solid #f1f1f1;
@@ -3551,6 +3596,10 @@ summary {
 .back {
 	display: flex;
 	justify-content: center;
+	height: 4em;
+}
+.back a{
+	height: 4em;
 }
 .sub_menu ul {
 	display: flex;
