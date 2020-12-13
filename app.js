@@ -42,13 +42,7 @@ app.use('/photo', photoRouter);
 app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
 
-//첨부파일
-app.use(function(req,res,next){
-	res.locals.isAuthenticated = req.isAuthenticated();
-	res.locals.currentUser = req.user;
-	res.locals.util = util;
-	next();
-})
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

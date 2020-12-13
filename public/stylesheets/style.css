@@ -3362,6 +3362,7 @@ footer ul{
 	box-sizing: border-box;
 }
 
+.n_writebtn,
 .cancelbtn,
 .loginbtn {
 	background-color: #86BF3E;
@@ -3388,6 +3389,10 @@ footer ul{
 	display: flex;
 	justify-content: center;
 	margin: 2em auto;
+}
+.n_writebtn{
+	margin-left:10px;
+	float: right;
 }
 
 #login_title {
@@ -3682,6 +3687,7 @@ summary {
 	height: 0;
 }
 
+
 .p_content thead {
 	border-bottom: 2px solid black;
 }
@@ -3716,6 +3722,36 @@ summary {
 .p_content tbody tr:nth-child(2n+1){
 	background-color: rgba(128,128,128,0.2);
 }
+/* notice */
+.n_content thead {
+	border-bottom: 2px solid black;
+}
+
+.n_content thead th{
+	padding: 0.75em;
+	padding-top: 0;
+	text-align: center;
+	font-size: 1em;
+	font-weight: 900;
+}
+
+.n_content tbody td{
+	text-align: center;
+	padding: 1em;
+	font-size: 1em;
+	/* border-bottom: 1px solid black; */
+}
+.n_content tbody td:nth-child(3) {
+	display: flex;
+	justify-content: space-between;
+}
+.n_content tbody td a {
+	border: none;
+}
+/* 
+.n_content tbody tr:nth-child(2n+1){
+	background-color: rgba(128,128,128,0.2);
+} */
 /* .popup-gallery .image:hover img{
 	transform: scale(1.3);
 } */

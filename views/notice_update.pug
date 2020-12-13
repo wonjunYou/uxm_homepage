@@ -3,15 +3,6 @@ block headtitle
   h2 Notice
 block content
     style.
-        .pagination {
-        list-style-type : none;
-        padding:0;
-        margin :0 auto;
-        text-align:center;
-        }
-        .pagination > li{
-        display : inline;
-        }
         #submits{
             display: block;
             margin:0 auto;
@@ -48,7 +39,7 @@ block content
               h2 공지사항 작성
             hr
             form(action=`./${notice._id}` method="post")
-                input(name="title" type="text" value=`${notice.title}`)
+                input(name="title" style="color:black;font-size:1.3em;" type="text" value=`${notice.title}`)
                 hr
                 textarea(name="content" id="cont" )= `${notice.content}`
                 br
