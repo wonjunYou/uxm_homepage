@@ -12,16 +12,16 @@ var photoRouter = require('./routes/photo');
 var photoDetailRouter = require('./routes/photo_detail');
 var publicationRouter = require('./routes/publication');
 var projectRouter = require('./routes/project');
+var signInRouter = require('./routes/signin');
 var app = express();
 
 //mongodb 연결
 const mongoose = require('mongoose');
-const connection_string = "mongodb+srv://uxm_admin:uxm572127@cluster0.ye6no.mongodb.net/uxmedia?retryWrites=true&w=majority"
-mongoose.connect(connection_string, {useNewUrlParser: true});
+const connection_string =
+	'mongodb+srv://uxm_admin:uxm572127@cluster0.ye6no.mongodb.net/uxmedia?retryWrites=true&w=majority';
+mongoose.connect(connection_string, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error);
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,8 +41,7 @@ app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
 app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
-
-
+app.use('/signin', signInRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
