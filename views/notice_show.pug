@@ -21,12 +21,13 @@ block content
             header.memberTitle
               h2= notice.title
               
-            p.text-center= notice.content
+            p
+              pre= notice.content
             //- -if(notice.attachement){
             //-   div 첨부파일
             //-     div= notice.attachement.originalFileName
             //- }
-            
-            button.btn(onclick=`location.href='/notice/delete/${notice._id}'`) 삭제
+            div
+              button.n_writebtn(onclick=`location.href='/notice/delete/${notice._id}'`) 삭제
 
-            button.btn(onclick=`location.href='/notice/edit/${notice._id}'`) 수정
+              button.n_writebtn(onclick=`location.href='/notice/edit/${notice._id}'`) 수정
