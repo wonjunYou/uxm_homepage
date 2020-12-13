@@ -5,20 +5,17 @@ block content
     .wrapper 
         #main.container
           h2#login_title LOGIN
-          form.login_form(action='/action_page.php' method='post')
-          .login_container
-              label.login_label(for='ID')
-                b ID
-              input.login_text(type='text' placeholder='ID' name='id' required='')
-              label.login_label(for='pw')
-                b Password
-              input.login_text(type='password' placeholder='Password' name='pw' required='')
-              button.loginbtn(type='submit') Login
-              label
-                input(type='checkbox' checked='checked' name='remember')
-              |  Remember Me
-          .login_container(style='background-color:#f1f1f1')
-              .inner_container
-              button.cancelbtn Cancel
-              span.pw
-                a(href='#') Forgot PW?
+          form.login_form(method='post')
+            .login_container
+                label.login_label(for='ID')
+                  b ID
+                input.login_text(type='text' placeholder='ID' name='id' required='')
+                label.login_label(for='pw')
+                  b Password
+                input.login_text(type='password' placeholder='Password' name='pw' required='')
+                button.loginbtn(type='submit') Login
+                  
+            .login_container(style='background-color:#f1f1f1')
+                .inner_container
+                button.cancelbtn Cancel
+                
