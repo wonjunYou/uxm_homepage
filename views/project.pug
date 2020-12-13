@@ -1,4 +1,6 @@
 extends index
+block headtitle
+  h2 project
 block content
     //- | {% block title %} Project {% endblock title %}
     //- | {% block headtitle %}Project{% endblock headtitle %}
@@ -6,8 +8,8 @@ block content
     .wrapper
       #main.container
         // Content
-        header.memberTitle
-          h2= title
+        //- header.memberTitle
+        //-   h2= title
         article#content
           header
             p 국책 과제 (Government funded projects)
