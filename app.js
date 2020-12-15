@@ -6,6 +6,7 @@ var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session')
 var passport = require('passport');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var memberRouter = require('./routes/member');
@@ -16,7 +17,6 @@ var photoDetailRouter = require('./routes/photo_detail');
 var publicationRouter = require('./routes/publication');
 var publicationDetailRouter = require('./routes/publication_detail');
 var projectRouter = require('./routes/project');
-var signInRouter = require('./routes/signin');
 var app = express();
 
 var passportConfig = require('./lib/passport-config'); //passport 로그인
@@ -33,6 +33,7 @@ db.on('error', console.error);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -73,7 +74,7 @@ app.use('/photo', photoRouter);
 app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
 app.use('/publication_detail', publicationDetailRouter);
-app.use('/signin', signInRouter);
+require('./routes/signin')(app, passport);
 
 //첨부파일
 // app.use(function(req,res,next){

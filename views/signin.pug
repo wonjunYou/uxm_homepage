@@ -5,14 +5,26 @@ block content
     .wrapper 
         #main.container
           h2#login_title LOGIN
-          form.login_form(method='post')
+          form.login_form(action="/signin" method='POST')
+            if flashMessages
+              each texts, type in flashMessages
+                .container
+                  each msg in texts
+                    | #{msg}
+            //-   each texts, type in flashMessages
+            //-     .container
+            //-       .alert.alert-dismissible.fade.show(class=`alert-${type}`)
+            //-         each msg in texts
+            //-           | #{msg} 
+            //-         button.close(type='button', data-dismiss='alert', aria-label='close')
+            //-           span(aria-hidden='true') &times;
             .login_container
                 label.login_label(for='ID')
-                  b ID
-                input.login_text(type='text' placeholder='ID' name='id' required='')
+                  b 
+                input.login_text(type='email' placeholder='ID' name='email' required='' id="email")
                 label.login_label(for='pw')
                   b Password
-                input.login_text(type='password' placeholder='Password' name='pw' required='')
+                input.login_text(type='password' placeholder='Password' name='password' required='' id="password")
                 button.loginbtn(type='submit') Login
                   
             .login_container(style='background-color:#f1f1f1')
