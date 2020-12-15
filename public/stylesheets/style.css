@@ -3685,11 +3685,13 @@ summary {
 	height: 0;
 }
 
-.p_content thead {
+.p_content thead,
+.pro_content thead {
 	border-bottom: 2px solid black;
 }
 
-.p_content thead th{
+.p_content thead th,
+.pro_content thead th{
 	padding: 0.75em;
 	padding-top: 0;
 	text-align: left;
@@ -3700,10 +3702,15 @@ summary {
 .p_content thead th:nth-child(3) {
 	width: 30%;
 }
+.pro_content thead th:nth-child(1) {
+	width: 70%;
+}
+
 .p_content thead th:nth-child(2) {
 	width: 40%;
 }
-.p_content tbody td{
+.p_content tbody td,
+.pro_content tbody td{
 	padding: 0.75em;
 	font-size: 0.75em;
 	border-bottom: 1px solid black;
