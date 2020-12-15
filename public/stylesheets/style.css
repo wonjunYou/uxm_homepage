@@ -3768,7 +3768,8 @@ summary {
 	display: flex;
 	justify-content: space-between;
 }
-.p_content tbody td a {
+.p_content tbody td a,
+.table tbody td a {
 	border: none;
 }
 
