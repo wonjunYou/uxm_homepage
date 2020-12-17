@@ -1,0 +1,18 @@
+extends layout
+block headtitle
+  h2 Publication
+block content
+  .wrapper
+    main.container
+      section.content
+        header
+          h2 논문 추가
+        form(action="/pub_upload" method="post")
+          label(for="category-select") 카테고리 : 
+          select(name="category" id="category-select")
+            option(value='international_journal') international journal
+            option(value='international_conference') international conference
+            option(value='domestic_journal') domestic journal
+            option(value='domestic_conference') domestic conference
+          label(for="author-input") 저자 : 
+          input(name="author" type="text" id="author" 저자 : 논문의 저자가 누구인지 )

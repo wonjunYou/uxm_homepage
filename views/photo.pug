@@ -7,43 +7,42 @@ block content
       nav.sub_menu
         ul
           li
-            a.on(href="#") 2020
+            a.on(href="/photo/2020") 2020
           li
-            a(href="#") 2019
+            a(href="/photo/2019") 2019
           li
-            a(href="#") 2018
+            a(href="/photo/2018") 2018
           li
-            a(href="#") 이전
+            a(href="/photo/pre") 이전
       section.content
         ul.thumbnail
-          each val in [1,2,3,4,5,6,7,8,9,10,11,12]
-            li
-              a(href="/photo_detail")
-                img(src="images/"+val+".jpg", alt="")
-                h4.thumbnail_title= '제목'+val
-                if val < 10
-                  p.thumbnail_date='20.0'+val+'.0'+val
-                else 
-                  p.thumbnail_date='20.'+val+'.'+val
-      section.paging
-        ol.paging_btn
-          li.first_page
-            a(href="#")
-              i.fas.fa-angle-double-left
-          li.prev_page
-            a(href="#")
-              i.fas.fa-angle-left
-          - let num = 3
-          each i in [num-2,num-1,num,num+1,num+2]
-            if (i != num)
-              li
-                a(href="")= i
-            else
-              li.page_on
-                a(href="")= i
-          li.next_page
-            a(href="#")
-              i.fas.fa-angle-right
-          li.last_page
-            a(href="#")
-              i.fas.fa-angle-double-right
+          //- each photo in photos
+          //-   li
+          //-     a(href="/photo_detail/"+photo._id)
+          //-       img(src=photo.images[0] alt=photo.images[0])
+          //-       h4.thumbnail_title= photo.title
+          //-       p.thumbnail_date= `${photo.time.getFullYear()}. ${photo.time.getMonth().toString().padStart(2,"0")}. ${photo.time.getDate().toString().padStart(2,"0")}`
+      section.edit_btn.admin
+        button.btn(onclick="location.href='/photo/upload'") 사진추가
+      //- section.paging
+      //-   ol.paging_btn
+      //-     li.first_page
+      //-       a(href="#")
+      //-         i.fas.fa-angle-double-left
+      //-     li.prev_page
+      //-       a(href="#")
+      //-         i.fas.fa-angle-left
+      //-     - let num = 3
+      //-     each i in [num-2,num-1,num,num+1,num+2]
+      //-       if (i != num)
+      //-         li
+      //-           a(href="")= i
+      //-       else
+      //-         li.page_on
+      //-           a(href="")= i
+      //-     li.next_page
+      //-       a(href="#")
+      //-         i.fas.fa-angle-right
+      //-     li.last_page
+      //-       a(href="#")
+      //-         i.fas.fa-angle-double-right
