@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var methodOverride = require('method-override');
-var session = require('express-session')
+var session = require('express-session');
 var passport = require('passport');
 var flash = require('connect-flash');
 
@@ -13,7 +13,6 @@ var memberRouter = require('./routes/member');
 var usersRouter = require('./routes/users');
 var noticeRouter = require('./routes/notice');
 var photoRouter = require('./routes/photo');
-var photoDetailRouter = require('./routes/photo_detail');
 var publicationRouter = require('./routes/publication');
 var publicationDetailRouter = require('./routes/publication_detail');
 var projectRouter = require('./routes/project');
@@ -39,26 +38,28 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(methodOverride('_method', {methods: ['POST', 'GET']}));
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
 
 const sessionStore = new session.MemoryStore();
 const sessionId = 'uxm.sid';
-const sessionSecret =  'uxmedia'
+const sessionSecret = 'uxmedia';
 // session을 사용할 수 있도록.
-app.use(session({
-  name: sessionId,
-  resave: true,
-  saveUninitialized: true,
-  store: sessionStore,
-  secret: sessionSecret
-}));
+app.use(
+	session({
+		name: sessionId,
+		resave: true,
+		saveUninitialized: true,
+		store: sessionStore,
+		secret: sessionSecret,
+	})
+);
 //passport
 app.use(passport.initialize());
 app.use(passport.session());
 passportConfig(passport);
 
-app.use(function(req, res, next) {
-	res.locals.currentUser = req.user;  // passport는 req.user로 user정보 전달
+app.use(function (req, res, next) {
+	res.locals.currentUser = req.user; // passport는 req.user로 user정보 전달
 	res.locals.flashMessages = req.flash();
 	next();
 });
@@ -71,7 +72,6 @@ app.use('/users', usersRouter);
 app.use('/project', projectRouter);
 app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
-app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
 app.use('/publication_detail', publicationDetailRouter);
 require('./routes/signin')(app, passport);
