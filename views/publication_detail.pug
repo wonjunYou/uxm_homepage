@@ -7,22 +7,22 @@ block content
       section.pub_info
         header
           p 국내학술지자료
-          h2 제목1
-          h3 Title1
+          h2= publication.title_kr
+          h3= publication.title_en
         main
           .pub_info_box
             .pub_info_text
-              .pub_title 김아무개(띵지머학교)
-              .pub_journal 어디어디학회
-              .pub_date 20.01.01
+              .pub_title=  publication.author
+              .pub_journal=  publication.journal
+              .pub_date=  `${publication.date.getFullYear()}. ${publication.date.getMonth()}`
             .pub_download
-              a(href='#' target='_blank')
+              a(href= '../'+publication.paper_url target='_blank')
                 i.fas.fa-file-download.fa-2x
                 span 다운로드
           .pub_abstract
             h3 초록
             hr
-            span 본 논문에서는 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ 이러쿵 저렁쿵 했습니다. 아라라아링ㄴ미륌ㄴ
+            span=  publication.abstract
             hr
       section.back
         input(type='button' value='돌아가기' onclick='history.back(-1);')

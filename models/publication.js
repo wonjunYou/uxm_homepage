@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const publicaionSchema = new mongoose.Schema(
+const publicationSchema = new mongoose.Schema(
 	{
 		category: {
 			type: String,
@@ -13,9 +13,10 @@ const publicaionSchema = new mongoose.Schema(
 				'domestic_conference',
 			],
 		},
+		date: Date,
 		author: String,
 		title_kr: String,
-		title_eng: String,
+		title_en: String,
 		journal: String,
 		abstract: String,
 		paper_url: String,
