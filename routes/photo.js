@@ -10,6 +10,9 @@ router.get('/', function (req, res, next) {
 		}
 	);
 });
+// router.get('/detail/:id', function (req, res, next) {
+// 	res.render('photo_detail');
+// });
 router.get('/:year', function (req, res, next) {
 	if (req.params.year == 'pre') {
 		let year = new Date().getFullYear();

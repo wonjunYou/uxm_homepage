@@ -1904,7 +1904,7 @@ input, select, textarea {
 
 /* Form */
 
-	form .actions {
+	/* form .actions {
 		padding-top: 0;
 	}
 
@@ -1964,7 +1964,7 @@ input, select, textarea {
 
 	form ::-moz-focus-inner {
 		border: 0;
-	}
+	} */
 
 /* Table */
 
@@ -3391,6 +3391,59 @@ footer ul{
 }
 .pub_abstract {
 	margin-top: 1.5em;
+}
+.form * {
+	box-sizing:border-box;
+	line-height: 1.5rem;
+
+}
+.form_title {
+	font-size: 2rem;
+	font-weight: 600;
+}
+.form_item {
+	display: flex;
+	flex-direction: column;
+}
+.form_item > * {
+	align-self: flex-start;
+}
+.form_label {
+	font-weight: 600;
+	padding: 10px 0;
+}
+.form_input ,
+.form_date ,
+.form_select {
+	width: 100%;
+	max-width: 1200px;
+	padding: 0.8em;
+	font-size: 0.9em;
+	outline: none;
+	border: 1px solid #aaaaaa;
+	border-radius: 4px;
+	background-color: #f9f9f9;
+	transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+}
+.form_input:focus,
+.form_date:focus,
+.form_select:focus {
+	background-color: #FFFFFF;
+}
+.form_input::placeholder {
+	color:#bbbbbb;
+}
+.form_btn {
+	font-weight: 600;
+	font-size: 1.1em;
+	padding: 10px 16px;
+	margin: 10px 0;
+	color: #FFFFFF;
+	background-color: var(--primary-color);
+	border: 2px solid #6b9a32;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
 }
 /* Login */
 .login_form {
