@@ -23,10 +23,11 @@ block content
               
             p
               pre= notice.content
-            //- -if(notice.attachement){
-            //-   div 첨부파일
-            //-     div= notice.attachement.originalFileName
-            //- }
+            
+            a(href= '../'+notice.paper_url target='_blank')
+                i.fas.fa-file-download.fa-2x
+                span 첨부파일
+
             div
               button.n_writebtn(onclick=`location.href='/notice/delete/${notice._id}'`) 삭제
 

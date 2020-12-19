@@ -3,22 +3,14 @@ block headtitle
   h2 Notice
 block content
     style.
-        .pagination {
-        list-style-type : none;
-        padding:0;
-        margin :0 auto;
-        text-align:center;
-        }
-        .pagination > li{
-        display : inline;
-        }
         #submits{
             display: block;
             margin:0 auto;
             padding:0 auto;
         }
-        input[type="text"]{
-            display:inline;
+        input,textarea{
+            width: 100%;
+            display:block;
         }
         input[type="file"]{
             margin:0 auto;
@@ -51,7 +43,7 @@ block content
                 hr
                 textarea(name="content" id="cont" ) 공지사항 내용을 입력해주세요!
                 br
-                //- .col-12
-                //-     input(width=100 type="file" name="attachment" accept="image/*")
-                //- br
+                label(for="input_file" class="form_label") 파일 업로드
+                input(type="file" name="attachment" class="form_input" id="input_file")           
+                br
                 button.btn(id="submits" type="submit" onclick="location.href='/notice'") Submit

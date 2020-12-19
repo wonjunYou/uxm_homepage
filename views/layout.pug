@@ -39,8 +39,12 @@ head
                 a(href='/notice') Notice
               li
                 a(href='/photo') Photo
-          li.sign_in
-            a(href='/signin') Login
+          if !currentUser
+            li.sign_in
+              a(href='/signin') Login
+          else
+            li.sign_in
+              a(href='/signout') Logout
 
     block main
     section#head-title

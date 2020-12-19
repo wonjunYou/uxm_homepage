@@ -22,10 +22,12 @@ block content
               th Title
               th Journal/Confernce
           tbody
-            each val in [1,2,3,4,5,6,7,8]
+            each publicaion in publications
               tr
-                td= '논문 저자'+ val
-                td= '논문 제목'+ val
-                td 어디어디학술지
-                  a(href='/publication_detail')
+                td= publicaion.author
+                td= publicaion.title_kr
+                td= publicaion.journal
+                  a(href='/publication/detail/'+publicaion._id)
                     i.fas.fa-info-circle
+      section.add_btn.admin
+        button.btn(onclick="location.href='/publication/upload'") 논문 업로드

@@ -3,18 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var memberRouter = require('./routes/member');
 var usersRouter = require('./routes/users');
 var noticeRouter = require('./routes/notice');
 var photoRouter = require('./routes/photo');
-var photoDetailRouter = require('./routes/photo_detail');
 var publicationRouter = require('./routes/publication');
 var publicationDetailRouter = require('./routes/publication_detail');
 var projectRouter = require('./routes/project');
 var signInRouter = require('./routes/signin');
 var app = express();
+
+var passportConfig = require('./lib/passport-config'); //passport 로그인
 
 //mongodb 연결
 const mongoose = require('mongoose');
@@ -28,10 +33,38 @@ db.on('error', console.error);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
+
+const sessionStore = new session.MemoryStore();
+const sessionId = 'uxm.sid';
+const sessionSecret = 'uxmedia';
+// session을 사용할 수 있도록.
+app.use(
+	session({
+		name: sessionId,
+		resave: true,
+		saveUninitialized: true,
+		store: sessionStore,
+		secret: sessionSecret,
+	})
+);
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig(passport);
+
+app.use(function (req, res, next) {
+	res.locals.currentUser = req.user; // passport는 req.user로 user정보 전달
+	res.locals.flashMessages = req.flash();
+	next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -40,7 +73,6 @@ app.use('/users', usersRouter);
 app.use('/project', projectRouter);
 app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
-app.use('/photo_detail', photoDetailRouter);
 app.use('/publication', publicationRouter);
 app.use('/publication_detail', publicationDetailRouter);
 app.use('/signin', signInRouter);

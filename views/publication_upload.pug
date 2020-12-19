@@ -1,0 +1,41 @@
+extends layout
+block headtitle
+  h2 Publication
+block content
+  .wrapper
+    main.container
+      section.content
+        form(action="/publication/pub_upload" method="post" enctype="multipart/form-data")
+          h2.form_title 논문 추가
+          br
+          .form_item
+            label(for="select_category" class="form_label") 카테고리
+            select(name="select_category" class="form_select" id="select_category")
+              option(value='international_journal') international journal
+              option(value='international_conference') international conference
+              option(value='domestic_journal') domestic journal
+              option(value='domestic_conference') domestic conference
+          .form_item
+            label(for="input_date" class="form_label") 제출년월
+            input(type="month" name="input_date" class="form_date" id="input_date" max="2100-12") 
+          .form_item
+            label(for="input_author" class="form_label") 저자
+            input(type="text" name="input_author" class="form_input" id="input_author" placeholder="Enter an author.") 
+          .form_item
+            label(for="input_title_kr" class="form_label") 제목(한글)
+            input(type="text" name="input_title_kr" class="form_input" id="input_title_kr" placeholder="Enter a Korean title.") 
+          .form_item
+            label(for="input_title_en" class="form_label") 제목(영어)
+            input(type="text" name="input_title_en" class="form_input" id="input_title_en" placeholder="Enter an English title.") 
+          .form_item
+            label(for="input_journal" class="form_label") 학술지 / 학회
+            input(type="text" name="input_journal" class="form_input" id="input_journal" placeholder="Enter the name of the journal or conference.") 
+          .form_item
+            label(for="input_abstract" class="form_label") 초록
+            input(type="text" name="input_abstract" class="form_input" id="input_abstract" placeholder="Enter the abstract of the thesis.")
+          .form_item
+            label(for="input_file" class="form_label") 파일 업로드
+            input(type="file" name="input_file" class="form_input" id="input_file")
+          .form_item
+            button.form_btn(type="submit") 추가하기
+

@@ -9,48 +9,42 @@ block content
           section.content
             table.n_content
               thead
-                tr
-                  th   
-                  th 제목
-                  th 작성일
-                  th 작성자
-                  th 조회수
-                  
-              tbody
+               
                 -for (var i=notice.length-1; i>0; i--)
                   tr(onclick=`${notice[i].views++}`)
-                    td= i
-                    td
+                    th= i
+                    th
                       a(href="/notice/show/"+notice[i]._id)= notice[i].title
-                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
-                    td= notice[i].writer
-                    td= notice[i].views
+                    th= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
+                    th= notice[i].writer
+                    th= notice[i].views
                 
               
           
           section.paging
-              button.n_writebtn(onclick="location.href='/notice/write'") 글쓰기
-              ol.paging_btn
-                li.first_page
-                  a(href="#")
-                    i.fas.fa-angle-double-left
-                li.prev_page
-                  a(href="#")
-                    i.fas.fa-angle-left
-                - let num = 3
-                each i in [num-2,num-1,num,num+1,num+2]
-                  if (i != num)
-                    li
-                      a(href="")= i
-                  else
-                    li.page_on
-                      a(href="")= i
-                li.next_page
-                  a(href="#")
-                    i.fas.fa-angle-right
-                li.last_page
-                  a(href="#")
-                    i.fas.fa-angle-double-right
+            br
+            button.n_writebtn(onclick="location.href='/notice/write'") 글쓰기
+          //-     ol.paging_btn
+          //-       li.first_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-double-left
+          //-       li.prev_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-left
+          //-       - let num = 3
+          //-       each i in [num-2,num-1,num,num+1,num+2]
+          //-         if (i != num)
+          //-           li
+          //-             a(href="")= i
+          //-         else
+          //-           li.page_on
+          //-             a(href="")= i
+          //-       li.next_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-right
+          //-       li.last_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-double-right
               
               
 
