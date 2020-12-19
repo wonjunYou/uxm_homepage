@@ -3414,6 +3414,7 @@ footer ul{
 }
 .form_input ,
 .form_date ,
+.form_img ,
 .form_select {
 	width: 100%;
 	max-width: 1200px;
@@ -3425,8 +3426,30 @@ footer ul{
 	background-color: #f9f9f9;
 	transition: background-color 0.25s, border-color 0.25s, color 0.25s;
 }
+.form_img {
+	margin-bottom: 5px;
+}
+.img_preview {
+	width: 100%;
+	max-width: 1200px;
+	min-height: 100px;
+	border: 2px solid #DDDDDD;
+	margin-top: 10px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	font-weight: bold;
+	color: #cccccc;
+}
+.img_preview_img {
+	display: none;
+	width: 100%;
+}
 .form_input:focus,
 .form_date:focus,
+.form_img:focus,
 .form_select:focus {
 	background-color: #FFFFFF;
 }
@@ -3706,9 +3729,9 @@ summary {
 	display: flex;
 	padding:0;
 	margin:0;
-	flex-wrap:wrap;
+	flex-wrap:wrap-reverse;
 	overflow-x: auto;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
 .thumbnail li {
@@ -3728,7 +3751,6 @@ summary {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
 	overflow: hidden;
 	cursor:pointer;
 }
@@ -3737,7 +3759,9 @@ summary {
 	padding:2%;
 	margin:0;
 	width: 96%;
-	height: 200px;
+	height: 250px;
+	max-width: 250px;
+	background-size: cover;
 }
 .thumbnail li a p,.thumbnail li a h4 {
 	border: none;
@@ -3855,8 +3879,27 @@ summary {
 }
 
 /* admin */
-section.edit_btn {
+section.btn_box {
 	display: flex;
 	justify-content: center;
 	padding: 1rem;
+	margin: 0;
+}
+
+button.add_btn,
+button.edit_btn,
+button.delete_btn {
+	font-weight: 600;
+	font-size: 1.1em;
+	padding: 10px 16px;
+	margin: 10px;
+	color: #FFFFFF;
+	background-color: var(--primary-color);
+	border: 1px solid var(--text-primary);
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+}
+button.delete_btn {
+	background-color: red;
 }

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Publication = require('../models/publication');
+const Publication = require('../models/publication');
 // for file upload
 const multer = require('multer');
 const storage = multer.diskStorage({
