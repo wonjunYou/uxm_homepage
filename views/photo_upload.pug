@@ -4,12 +4,23 @@ block headtitle
 block content
   .wrapper
     main.container
-      section.photo_content
-        header.memberTitle
-              h2 사진 추가
-            hr
-            form(action="/photo/upload"  method="post")
-                input(name="title" type="text" value="사진 제목을 입력해주세요.")
-                textarea(name="content" id="cont" ) 사진 설명을 입력해주세요.
-                button.btn(id="submits" type="submit" onclick="location.href='/photo'") upload
-      
+      section.content
+        form(action="/photo/photo_upload" method="post" enctype="multipart/form-data")
+          h2.form_title 사진 추가
+          br
+          .form_item
+            label(for="input_title" class="form_label") 제목
+            input(type="text" name="input_title" class="form_input" id="input_title" placeholder="Enter a title.") 
+          .form_item
+            label(for="input_description" class="form_label") 설명
+            input(type="text" name="input_description" class="form_input" id="input_description" placeholder="Enter a description of the photo.") 
+          .form_item
+            label(for="input_date" class="form_label") 날짜
+            input(type="date" name="input_date" class="form_date" id="input_date" max="2100-01-01") 
+          .form_item
+            label(for="input_img" class="form_label") 사진 업로드
+            input(type="file" name="input_img" class="form_img" id="input_img" multiple)
+            .img_preview#img_preview
+              span.img_preview_default_text Image Preview
+          .form_item
+            button.form_btn(type="submit") 추가하기

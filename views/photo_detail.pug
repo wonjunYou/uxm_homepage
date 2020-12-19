@@ -6,27 +6,16 @@ block content
     main.container
       section.p_info
         header
-          h2 제목1
-          p 20.01.01
-        p 어쩌구저쩌구
+          h2= photo.title
+          p= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
+        p= photo.description
       section.gallery
         .popup-gallery.detail
-          a.image(href='/images/20200716_deeplearning.jpg')
-            img(src='/images/20200716_deeplearning.jpg' alt='테스트')
-            .photo_description 더 보기
-          a.image(href='/images/20200806_workshop.jpg')
-            img(src='/images/20200806_workshop.jpg' alt='테스트')
-          a.image(href='/images/dojinYou.jpg')
-            img(src='/images/dojinYou.jpg' alt='테스트')
-          a.image(href='/images/professorK.jpg')
-            img(src='/images/professorK.jpg' alt='테스트')
-          a.image(href='/images/slideshow1.jpg')
-            img(src='/images/slideshow1.jpg' alt='테스트')
-          a.image(href='/images/slideshow2.jpg')
-            img(src='/images/slideshow2.jpg' alt='테스트')
-          a.image(href='/images/slideshow3.jpg')
-            img(src='/images/slideshow3.jpg' alt='테스트')
-          a.image(href='/images/13.jpg')
-            img(src='/images/13.jpg' alt='테스트')
+          -for (source_url of photo.images)
+            a.image(href=`/images/${source_url}`)
+              img(src=`/images/${source_url}`)
+      section.btn_box.admin
+        button.edit_btn(onclick=`location.href='/photo/edit/${photo._id}`) 수정
+        button.delete_btn(onclick=`location.href='/photo/delete/${photo._id}`) 삭제
       section.back
         input(type='button' value='돌아가기' onclick='history.back(-1);')

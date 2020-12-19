@@ -5,12 +5,8 @@ const photoSchema = new mongoose.Schema(
 	{
 		title: String,
 		description: String,
-		time: Date,
-		images: [
-			{
-				source_url: String,
-			},
-		],
+		date: Date,
+		images: [String],
 	},
 	{ collection: 'photo' }
 );
