@@ -3745,6 +3745,7 @@ summary {
 	flex-wrap:wrap-reverse;
 	overflow-x: auto;
 	justify-content: flex-start;
+	flex-direction: row-reverse;
 }
 
 .thumbnail li {
