@@ -80,7 +80,7 @@ router.post('/photo_upload', upload.array('input_img'), function (req, res) {
 	let photo = new Photo();
 	photo.title = req.body.input_title;
 	photo.description = req.body.input_description;
-	photo.date = req.body.input_date.format();
+	photo.date = req.body.input_date;
 	let images_array = [];
 	for (let i = 0; i < req.files.length; i++) {
 		images_array.push(req.files[i].filename);
@@ -93,5 +93,45 @@ router.post('/photo_upload', upload.array('input_img'), function (req, res) {
 		res.redirect('/photo');
 	});
 });
-
+router.get('/edit/:id', function (req, res) {
+	Photo.findOne({ _id: req.params.id }, function (err, photo) {
+		if (err) {
+			return res.json(err);
+		}
+		res.render('photo_update', { photo: photo });
+	});
+});
+router.post('/edit/:id', upload.array('input_img'), function (req, res) {
+	let images_array = [];
+	for (let i = 0; i < req.files.length; i++) {
+		images_array.push(req.files[i].filename);
+	}
+	var photo = new Photo({
+		_id: req.params.id,
+		title: req.body.input_title,
+		description: req.body.input_description,
+		date: req.body.input_date,
+		images: images_array,
+	});
+	Photo.updateOne({ _id: req.params.id }, photo, function (err, photo) {
+		if (err) return res.json(err);
+		res.redirect('/photo');
+	});
+});
+router.get('/delete/:id', function (req, res) {
+	var fs = require('fs');
+	Photo.findOne({ _id: req.params.id }, function (err, photo) {
+		for (source_url of photo.images) {
+			fs.unlink(`public/images/${source_url}`, function (err) {
+				if (err) {
+					return res.json(err);
+				}
+			});
+		}
+	});
+	Photo.deleteOne({ _id: req.params.id }, function (err, photo) {
+		if (err) return res.json(err);
+		res.redirect('/photo');
+	});
+});
 module.exports = router;
