@@ -87,6 +87,14 @@ router.post('/edit/:id', upload.single('input_file'), function (req, res) {
 	);
 });
 router.get('/delete/:id', function (req, res) {
+	var fs = require('fs');
+	Publication.findOne({ _id: req.params.id }, function (err, pub) {
+		fs.unlink(`public/uploads/${pub.paper_url}`, function (err) {
+			if (err) {
+				return res.json(err);
+			}
+		});
+	});
 	Publication.deleteOne({ _id: req.params.id }, function (err, notice) {
 		if (err) return res.json(err);
 		res.redirect('/publication');
