@@ -2206,6 +2206,8 @@ input, select, textarea {
 				-moz-animation: fadein 1.5s;
 				-webkit-animation: fadein 1.5s;
 				-o-animation: fadein 1.5s;
+				list-style-type: none;
+				overflow: hidden;
 			}
 
 			@keyframes fadein {
@@ -2482,7 +2484,10 @@ footer ul{
 	width: 350px;
 	height: 350px;
 }
-
+.contact li {
+	font-size:0.875em;
+	align-items: center;
+}
 
 /* Normal */
 
@@ -3475,7 +3480,6 @@ footer ul{
 	margin-left: 10px !important;
 	color: var(--text-primary) !important;
 	background-color: var(--background-color) !important;
-	border: 2px solid var(--sub-border) !important;
 }
 /* Login */
 .login_form {
@@ -3886,7 +3890,6 @@ summary {
 	text-align: center;
 	padding: 1em;
 	font-size: 1em;
-	/* border-bottom: 1px solid black; */
 }
 .n_content tbody td:nth-child(3) {
 	display: flex;
@@ -3937,14 +3940,19 @@ button.form_btn {
 	font-weight: 600;
 	font-size: 1.1em;
 	padding: 10px 16px;
-	margin: 10px;
 	color: #FFFFFF;
 	background-color: var(--primary-color);
-	border: 1px solid var(--text-primary);
+	/* border: 1px solid var(--text-primary); */
 	border-radius: 5px;
 	cursor: pointer;
 	outline: none;
 }
+
+button.edit_btn,
+button.delete_btn {
+	margin: 10px;
+}
 button.delete_btn {
 	background-color: red;
 }
+

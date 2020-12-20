@@ -24,10 +24,14 @@ block content
             p
               pre= notice.content
             
-            a(href= '../'+notice.paper_url target='_blank')
-                i.fas.fa-file-download.fa-2x
-                span 첨부파일
+            br
+            //- p
+            //- if notice.paper_url
+            //-   a(href=`../${notice.paper_url}` target='_blank')
+            //-       i.fas.fa-file-download.fa-2x
+            //-       span= notice.paper_url
 
+            
             div
               button.n_writebtn(onclick=`location.href='/notice/delete/${notice._id}'`) 삭제
 

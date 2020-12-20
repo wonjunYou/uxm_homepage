@@ -7,23 +7,25 @@ block content
       nav.sub_menu
         ul
           li
-            a.on(href="/photo/2020") 2020
+            a.on(href="#") 2020
           li
-            a(href="/photo/2019") 2019
+            a(href="#") 2019
           li
-            a(href="/photo/2018") 2018
+            a(href="#") 2018
           li
-            a(href="/photo/pre") 이전
+            a(href="#") 이전
       section.content
-        ul.thumbnail
-          each photo in photos
-            li
-              a(href="/photo/detail/"+photo._id)
-                img(src=`images/${photo.images[0]}` alt=photo.description)
-                h4.thumbnail_title= photo.title
-                p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
-      section.btn_box.admin
-        button.add_btn(onclick="location.href='/photo/upload'") 사진추가
+        each p in photos
+          ul.thumbnail
+            each photo in p
+              li
+                a(href="/photo/detail/"+photo._id)
+                  img(src=`images/${photo.images[0]}` alt=photo.description)
+                  h4.thumbnail_title= photo.title
+                  p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
+      if currentUser
+        section.btn_box.admin
+          button.add_btn(onclick="location.href='/photo/upload'") 사진추가
       //- section.paging
       //-   ol.paging_btn
       //-     li.first_page

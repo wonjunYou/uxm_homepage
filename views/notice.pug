@@ -7,23 +7,24 @@ block content
     .wrapper
         main.container
           section.content
-            table.n_content
-              thead
-               
+            table.p_content
+              
+              tbody
                 -for (var i=notice.length-1; i>0; i--)
                   tr(onclick=`${notice[i].views++}`)
-                    th= i
-                    th
+                    td= i
+                    td
                       a(href="/notice/show/"+notice[i]._id)= notice[i].title
-                    th= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
-                    th= notice[i].writer
-                    th= notice[i].views
-                
+                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
+                    td= notice[i].writer
+                    td= notice[i].views
+          if currentUser
+            sectin.btn_box.admin
+              button.add_btn(onclick="location.href='/notice/write'") 글쓰기       
               
           
           section.paging
-            br
-            button.n_writebtn(onclick="location.href='/notice/write'") 글쓰기
+            
           //-     ol.paging_btn
           //-       li.first_page
           //-         a(href="#")

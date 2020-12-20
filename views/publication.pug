@@ -29,5 +29,6 @@ block content
                 td= publicaion.journal
                   a(href='/publication/detail/'+publicaion._id)
                     i.fas.fa-info-circle
-      section.btn_box.admin
-        button.btn(onclick="location.href='/publication/upload'") 논문 업로드
+      if currentUser
+        section.btn_box.admin
+          button.btn(onclick="location.href='/publication/upload'") 논문 업로드

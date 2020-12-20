@@ -14,8 +14,9 @@ block content
           -for (source_url of photo.images)
             a.image(href=`/images/${source_url}`)
               img(src=`/images/${source_url}`)
-      section.btn_box.admin
-        button.edit_btn(onclick=`location.href='/photo/edit/${photo._id}'`) 수정
-        button.delete_btn(onclick=`location.href='/photo/delete/${photo._id}'`) 삭제
+      if currentUser
+        section.btn_box.admin
+          button.edit_btn(onclick=`location.href='/photo/edit/${photo._id}'`) 수정
+          button.delete_btn(onclick=`location.href='/photo/delete/${photo._id}'`) 삭제
       section.back
         input(type='button' value='돌아가기' onclick='history.back(-1);')
