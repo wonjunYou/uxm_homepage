@@ -10,7 +10,7 @@ const noticeSchema = new mongoose.Schema(
 		views: { type: Number, default: 0 },
 		date: { type: Date, default: Date.now() },
 		numId: { type: Number },
-		attachment: { type: mongoose.Schema.Types.ObjectId, ref: 'file' }, // 1
+		attachment: String,
 		createdAt: { type: Date, default: Date.now },
 	},
 	{ collection: 'notice' }

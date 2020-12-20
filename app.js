@@ -14,7 +14,9 @@ var usersRouter = require('./routes/users');
 var noticeRouter = require('./routes/notice');
 var photoRouter = require('./routes/photo');
 var publicationRouter = require('./routes/publication');
+var publicationDetailRouter = require('./routes/publication_detail');
 var projectRouter = require('./routes/project');
+var signInRouter = require('./routes/signin');
 var app = express();
 
 var passportConfig = require('./lib/passport-config'); //passport 로그인
@@ -72,15 +74,8 @@ app.use('/project', projectRouter);
 app.use('/notice', noticeRouter);
 app.use('/photo', photoRouter);
 app.use('/publication', publicationRouter);
-require('./routes/signin')(app, passport);
-
-//첨부파일
-// app.use(function(req,res,next){
-// 	res.locals.isAuthenticated = req.isAuthenticated();
-// 	res.locals.currentUser = req.user;
-// 	res.locals.util = util;
-// 	next();
-// })
+app.use('/publication_detail', publicationDetailRouter);
+app.use('/signin', signInRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
