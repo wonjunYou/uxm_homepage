@@ -3,10 +3,22 @@ var router = express.Router();
 
 var Notice = require('../models/notice');
 
-router.get('/', function (req, res, next) {
-	Notice.find({}, function (err, notice) {
-		res.render('notice', { title: 'Notice', notice: notice });
-	});
+
+const multer = require('multer');
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, './public/uploads/');
+	},
+	filename: function (req, file, cb) {
+		cb(null, `${req.body.title}.pdf`);
+	},
+});
+const upload = multer({ storage: storage });
+
+router.get('/', function(req, res, next) {
+  Notice.find({},function (err, notice){  
+  res.render('notice',{title:"Notice",notice:notice});
+  });
 });
 
 router.get('/show/:id', function (req, res, next) {
@@ -21,20 +33,22 @@ router.get('/write', function (req, res, next) {
 	res.render('notice_write');
 });
 
-router.post('/notice/write', function (req, res) {
-	var notice = new Notice();
-	notice.title = req.body.title;
-	notice.content = req.body.content;
-	notice.date = Date.now();
-	notice.writer = '관리자';
-	notice.views = req.body.views;
-	notice.save(function (err) {
-		if (err) {
-			console.log(err);
-			res.redirect('/notice');
-		}
-		res.redirect('/notice');
-	});
+
+router.post('/notice/write',function(req, res){
+  var notice= new Notice();
+  notice.title = req.body.title;
+  notice.content = req.body.content;
+  notice.date = Date.now();
+  notice.writer = "관리자";
+  notice.views = req.body.views;
+  notice.abstract = req.body.abstract;
+  notice.save(function(err){
+    if(err){
+      console.log(err);
+      res.redirect('/notice');
+    }
+    res.redirect('/notice');
+  });
 });
 
 router.get('/edit/:id', function (req, res) {

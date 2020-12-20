@@ -1,44 +1,3 @@
-//- extends index
-//- block headtitle
-//-   h2 project
-//- block content
-//-     //- | {% block title %} Project {% endblock title %}
-//-     //- | {% block headtitle %}Project{% endblock headtitle %}
-//-     //- | {% block content %}
-//-     .wrapper
-//-       #main.container
-//-         // Content
-//-         //- header.memberTitle
-//-         //-   h2= title
-//-         article#content
-//-           header
-//-             p 국책 과제 (Government funded projects)
-//-           ol
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-         br
-//-         article#content
-//-           header
-//-             p 산학 과제 (Industrial collaboration projects)
-//-           ol
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-         br
-//-         article#content
-//-           header
-//-             p 내부 과제 (Internal projects)
-//-           ol
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
-//-             li 영문 과제명(한글과제명)[xxxx.x~xxxx.x]
 extends layout
 block headtitle
   h2 Project
@@ -55,12 +14,17 @@ block content
             a(href="#") 내부과제
       section.content
         table.pro_content
+          //- thead
+          //-   tr
+          //-     th 국문과제명
+          //-     th 영문과제명
+          //-     th 과제 수행 기간
           thead
-            tr
-              th Title
-              th No
-          tbody
-            each val in [1,2,3,4,5,6,7,8]
+            each pro in project
               tr
-                td= '한글 과제 명'
-                td= '[xxxx.x~xxxx.x]'
+                th= pro.kr
+                th= pro.eng
+                th= `[${pro.date_start.getFullYear()}.${pro.date_start.getMonth()}~${pro.date_end.getFullYear()}.${pro.date_end.getMonth()}]`
+            
+          
+        button.btn(onclick="location.href='/project/update'") 과제 업로드
