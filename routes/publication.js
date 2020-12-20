@@ -56,4 +56,26 @@ router.get('/:url', function (req, res) {
 	const file = `${__dirname}/../public/uploads/${req.params.url}`;
 	res.download(file);
 });
+router.get('/edit/:id', function (req, res) {
+	Publication.findOne({ _id: req.params.id }, function (err, publication) {
+		if (err) return res.json(err);
+		res.render('publication_update', { publication: publication });
+	});
+});
+router.post('/edit/:id', function (req, res) {
+	Publication.updateOne(
+		{ _id: req.params.id },
+		{ $set: req.body },
+		function (err, publicaion) {
+			if (err) return res.json(err);
+			res.redirect('/notice');
+		}
+	);
+});
+router.get('/delete/:id', function (req, res) {
+	Publication.deleteOne({ _id: req.params.id }, function (err, notice) {
+		if (err) return res.json(err);
+		res.redirect('/notice');
+	});
+});
 module.exports = router;

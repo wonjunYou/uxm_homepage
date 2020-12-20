@@ -24,5 +24,8 @@ block content
             hr
             span=  publication.abstract
             hr
+      section.btn_box.admin
+        button.edit_btn(onclick=`location.href='/publicaion/edit/${publication._id}`) 수정
+        button.delete_btn(onclick=`location.href='/publication/delete/${publication._id}`) 삭제
       section.back
         input(type='button' value='돌아가기' onclick='history.back(-1);')

@@ -1904,7 +1904,7 @@ input, select, textarea {
 
 /* Form */
 
-	/* form .actions {
+	form .actions {
 		padding-top: 0;
 	}
 
@@ -1964,7 +1964,7 @@ input, select, textarea {
 
 	form ::-moz-focus-inner {
 		border: 0;
-	} */
+	}
 
 /* Table */
 
@@ -3395,38 +3395,38 @@ footer ul{
 <<<<<<< HEAD
 =======
 .form * {
-	box-sizing:border-box;
-	line-height: 1.5rem;
+	box-sizing:border-box !important;
+	line-height: 1.5rem !important;
 
 }
 .form_title {
-	font-size: 2rem;
-	font-weight: 600;
+	font-size: 2rem !important;
+	font-weight: 600 !important;
 }
 .form_item {
-	display: flex;
-	flex-direction: column;
+	display: flex !important;
+	flex-direction: column !important;
 }
 .form_item > * {
-	align-self: flex-start;
+	align-self: flex-start !important;
 }
 .form_label {
-	font-weight: 600;
-	padding: 10px 0;
+	font-weight: 600 !important;
+	padding: 10px 0 !important;
 }
 .form_input ,
 .form_date ,
 .form_img ,
 .form_select {
-	width: 100%;
-	max-width: 1200px;
-	padding: 0.8em;
-	font-size: 0.9em;
-	outline: none;
-	border: 1px solid #aaaaaa;
-	border-radius: 4px;
-	background-color: #f9f9f9;
-	transition: background-color 0.25s, border-color 0.25s, color 0.25s;
+	width: 100% !important; 
+	max-width: 1200px !important;
+	padding: 0.8em !important;
+	font-size: 0.9em !important;
+	outline: none !important;
+	border: 1px solid #aaaaaa !important;
+	border-radius: 4px !important;
+	background-color: #f9f9f9 !important;
+	transition: background-color 0.25s, border-color 0.25s, color 0.25s !important;
 }
 .form_img {
 	margin-bottom: 5px;
