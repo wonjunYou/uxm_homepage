@@ -3,6 +3,17 @@ var router = express.Router();
 
 var Notice = require('../models/notice');
 
+const multer = require('multer');
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, './public/uploads/');
+	},
+	filename: function (req, file, cb) {
+		cb(null, `${req.body.title}.pdf`);
+	},
+});
+const upload = multer({ storage: storage });
+
 router.get('/', function(req, res, next) {
   Notice.find({},function (err, notice){  
   res.render('notice',{title:"Notice",notice:notice});
@@ -29,6 +40,7 @@ router.post('/notice/write',function(req, res){
   notice.date = Date.now();
   notice.writer = "관리자";
   notice.views = req.body.views;
+  notice.abstract = req.body.abstract;
   notice.save(function(err){
     if(err){
       console.log(err);

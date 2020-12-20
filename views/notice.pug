@@ -2,59 +2,49 @@ extends layout
 block headtitle
   h2 Notice
 block content
-    style.
-        .pagination {
-        list-style-type : none;
-        padding:0;
-        margin :0 auto;
-        text-align:center;
-        }
-        .pagination > li{
-        display : inline;
-        }
-    script.
-      
+    
+
     .wrapper
-      
-      .container
-        // Content
-        article#content
-            //- #main.container
-            table.table.table-striped(style="font-size:0.8em;text-align:center; ")
-              thead(style="border-bottom: 1px solid gray;border-top: 1px solid gray")
-                tr
-                  th(width="3%")
-                  th(width="50%") 제목
-                  th(width="14%") 작성일
-                  th(width="14%") 작성자
-                  th(width="12%") 조회수
-                  
-              tbody
-                -for (var i=0; i<notice.length; i++)
+        main.container
+          section.content
+            table.n_content
+              thead
+               
+                -for (var i=notice.length-1; i>0; i--)
                   tr(onclick=`${notice[i].views++}`)
-                    td= i+1
-                    td
+                    th= i
+                    th
                       a(href="/notice/show/"+notice[i]._id)= notice[i].title
-                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
-                    td= notice[i].writer
-                    td= notice[i].views
-                    
-                  
-            //- ul.pagination
-            //-   li.page-item 
-            //-     a.page-link(href="#") prev
-            //-   li.page-item 
-            //-     a.page-link(href="#") 1
-            //-   li.page-item 
-            //-     a.page-link(href="#") 2
-            //-   li.page-item 
-            //-     a.page-link(href="#") 3
-            //-   li.page-item 
-            //-     a.page-link(href="#") 4 
-            //-   li.page-item 
-            //-     a.page-link(href="#") 5
-            //-   li.page-item 
-            //-     a.page-link(href="#") next
-            
-            button.btn(onclick="location.href='/notice/write'") 글쓰기
+                    th= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
+                    th= notice[i].writer
+                    th= notice[i].views
+                
+              
+          
+          section.paging
+            br
+            button.n_writebtn(onclick="location.href='/notice/write'") 글쓰기
+          //-     ol.paging_btn
+          //-       li.first_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-double-left
+          //-       li.prev_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-left
+          //-       - let num = 3
+          //-       each i in [num-2,num-1,num,num+1,num+2]
+          //-         if (i != num)
+          //-           li
+          //-             a(href="")= i
+          //-         else
+          //-           li.page_on
+          //-             a(href="")= i
+          //-       li.next_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-right
+          //-       li.last_page
+          //-         a(href="#")
+          //-           i.fas.fa-angle-double-right
+              
+              
 

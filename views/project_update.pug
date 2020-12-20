@@ -1,0 +1,34 @@
+extends layout
+block headtitle
+  h2 Project
+block content
+  .wrapper
+    main.container
+      section.content
+        form(action="/project/upload" method="post")
+          h2.form_title 과제 추가
+          br
+          .form_item
+            label(for="select_category" class="form_label") 카테고리
+            select(name="select_category" class="form_select" id="select_category")
+              option(value= 'national') national policy
+              option(value='industrial') industrial science
+              option(value= 'internal') Interal project
+
+          .form_item
+            label(for="input_date" class="form_label") 과제 시작일
+            input(type="month" name="date_start" class="form_date" id="input_date" max="2100-12")
+            
+          .form_item
+            label(for="input_date" class="form_label") 과제 마감일
+            input(type="month" name="date_end" class="form_date" id="input_date" max="2100-12")   
+  
+          .form_item
+            label(for="kr" class="form_label") 제목(한글)
+            input(type="text" name="kr" class="form_input" placeholder="Enter a Korean title.") 
+          .form_item
+            label(for="eng" class="form_label") 제목(영어)
+            input(type="text" name="eng" class="form_input" placeholder="Enter a English title.") 
+
+          .form_item
+            button.form_btn(type="submit" onclick="location.href='/project'") 추가하기
