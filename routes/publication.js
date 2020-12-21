@@ -17,12 +17,38 @@ const upload = multer({ storage: storage });
 
 // get/post
 router.get('/', function (req, res, next) {
-	Publication.find(
-		{ category: 'international_journal' },
-		function (err, publication) {
-			res.render('publication', { publications: publication });
-		}
-	);
+	// const categories = [
+	// 	'international_journal',
+	// 	'international_conference',
+	// 	'domestic_journal',
+	// 	'domestic_conference',
+	// ];
+	// let pub_list = [];
+	// for (category of categories) {
+	// 	Publication.find({ category: category }, function (err, publication) {
+	// 		pub_list.push(publication);
+	// 	});
+	// }
+	// res.render('publication', { pub_list: pub_list });
+
+	// let pub;
+	// Publication.find(
+	// 	{ category: 'international_journal' },
+	// 	function (err, publication) {
+	// 		pub = publication;
+	// 	}
+	// );
+	// res.render('publication', { publications: pub });
+
+	Publication.find(function (err, pub) {
+		pub.sort(function (a, b) {
+			if (a.category > b.category) {
+				return -1;
+			}
+			return 1;
+		});
+		res.render('publication', { publications: pub });
+	});
 });
 
 router.get('/detail/:id', function (req, res, next) {
@@ -38,7 +64,6 @@ router.get('/upload', function (req, res, next) {
 router.post('/pub_upload', upload.single('input_file'), function (req, res) {
 	var publication = new Publication();
 	publication.category = req.body.select_category;
-	console.log(`category = ${req.body.select_category}`);
 	publication.date = req.body.input_date;
 	publication.author = req.body.input_author;
 	publication.title_kr = req.body.input_title_kr;
