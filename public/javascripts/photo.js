@@ -12,8 +12,6 @@ $(document).ready(function () {
 	$('.sub_menu > 	ul > li > a').click(function () {
 		$('.on').removeClass('on');
 		$(this).addClass('on');
-		let year = $(this).innerText();
-		console.log(year);
 	});
 	const input_img = document.getElementById('input_img');
 	const preview_container = document.getElementById('img_preview');
