@@ -13,18 +13,18 @@ block content
           li
             a(href="#") 내부과제
       section.content
-        table.pro_content
+        table.p_content
           //- thead
           //-   tr
           //-     th 국문과제명
           //-     th 영문과제명
           //-     th 과제 수행 기간
-          thead
+          tbody
             each pro in project
               tr
-                th= pro.kr
-                th= pro.eng
-                th= `[${pro.date_start.getFullYear()}.${pro.date_start.getMonth()}~${pro.date_end.getFullYear()}.${pro.date_end.getMonth()}]`
+                td= pro.kr
+                td= pro.eng
+                td= `[${pro.date_start.getFullYear()}.${pro.date_start.getMonth()}~${pro.date_end.getFullYear()}.${pro.date_end.getMonth()}]`
             
           
         button.btn(onclick="location.href='/project/update'") 과제 업로드

@@ -41,6 +41,7 @@ router.post('/notice/write',function(req, res){
   notice.writer = "관리자";
   notice.views = req.body.views;
   notice.abstract = req.body.abstract;
+  notice.file_url = req.file.filename;
   notice.save(function(err){
     if(err){
       console.log(err);
@@ -49,6 +50,11 @@ router.post('/notice/write',function(req, res){
     res.redirect('/notice');
   });
 });
+
+router.get('/:url',function(req,res){
+  const file = `${__dirname}/../notice/uploads/${req.params.url}`;
+  res.download(file);
+})
 
 router.get('/edit/:id',function(req,res){
   Notice.findOne({_id:req.params.id},function(err, notice){
