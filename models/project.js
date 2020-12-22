@@ -7,14 +7,7 @@ const projectSchema = new mongoose.Schema({
     eng:String,
     date_start:Date,
     date_end:Date,
-    category: {
-        type: String,
-        enum: [
-            'national',
-            'industrial',
-            'internal'
-        ]
-    },
+    category:String,
     createdAt:{type:Date, default:Date.now},
     
 },{collection:'project'});

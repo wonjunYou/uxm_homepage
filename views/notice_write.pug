@@ -42,8 +42,8 @@ block content
                 input(name="title" type="text" style="color:black;font-size:1.3em" value="공지사항 제목을 입력해주세요")
                 hr
                 textarea(name="content" id="cont" ) 공지사항 내용을 입력해주세요!
+            
+                //- label 파일 업로드
+                //- input(type="file" name="attachment")           
                 br
-                label(for="input_file" class="form_label") 파일 업로드
-                input(type="file" name="attachment" class="form_input" id="input_file")           
-                br
-                button.btn(id="submits" type="submit" onclick="location.href='/notice'") Submit
+                button.btn(id="submits" type="submit") Submit

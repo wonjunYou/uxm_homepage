@@ -14,7 +14,7 @@ block content
             .pub_info_text
               .pub_title=  publication.author
               .pub_journal=  publication.journal
-              .pub_date=  `${publication.date.getFullYear()}. ${publication.date.getMonth()}`
+              .pub_date=  `${publication.date.getFullYear()}. ${(publication.date.getMonth()+1).toString().padStart(2,"0")}`
             .pub_download
               a(href= '../'+publication.paper_url target='_blank')
                 i.fas.fa-file-download.fa-2x
@@ -24,5 +24,9 @@ block content
             hr
             span=  publication.abstract
             hr
+      if currentUser
+        section.btn_box.admin
+          button.edit_btn(onclick=`location.href='/publication/edit/${publication._id}'`) 수정
+          button.delete_btn(onclick=`location.href='/publication/delete/${publication._id}'`) 삭제
       section.back
         input(type='button' value='돌아가기' onclick='history.back(-1);')

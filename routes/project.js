@@ -24,6 +24,7 @@ router.post('/upload',function(req,res){
     if(err){
       console.log(err);
     }
+
     res.redirect('/project');
   });
 });

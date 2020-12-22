@@ -1,0 +1,27 @@
+extends layout
+block headtitle
+  h2 Photo
+block content
+  .wrapper
+    main.container
+      section.content
+        form(action="/photo/photo_upload" method="post" enctype="multipart/form-data")
+          h2.form_title 사진 추가
+          br
+          .form_item
+            label(for="input_title" class="form_label") 제목
+            input(type="text" name="input_title" class="form_input" id="input_title" placeholder="Enter a title." value=photo.title) 
+          .form_item
+            label(for="input_description" class="form_label") 설명
+            input(type="text" name="input_description" class="form_input" id="input_description" placeholder="Enter a description of the photo." value=photo.description) 
+          .form_item
+            label(for="input_date" class="form_label") 날짜
+            input(type="date" name="input_date" class="form_date" id="input_date" max="2100-01-01" value=`${photo.date.getFullYear()}-${(photo.date.getMonth()+1).toString().padStart(2,"0")}-${photo.date.getDate().toString().padStart(2,"0")}`) 
+          .form_item
+            label(for="input_img" class="form_label") 사진 업로드
+            input(type="file" name="input_img" class="form_img" id="input_img" multiple)
+            .img_preview#img_preview
+              span.img_preview_default_text Image Preview
+          .btn_box
+            button.form_btn(type="submit") 수정
+            input.form_btn.cancel_btn(type="button" value="취소" onclick='history.back(-1);') 
