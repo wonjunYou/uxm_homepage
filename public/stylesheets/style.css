@@ -3969,10 +3969,10 @@ summary {
 	.popup-gallery .image {
 		flex:98%;
 	}
-	.sub_menu ul li a,
+	/* .sub_menu ul li a,
 	.pub_sub_menu ul li a {
 		font-size:0.8em;
-	}
+	} */
 }
 
 /* admin */

@@ -33,37 +33,15 @@ const upload = multer({
 });
 
 router.get('/', function (req, res, next) {
-	// let photos = [];
-	let year = new Date();
-	year = year.getFullYear();
-	let i = 0;
-	// for (let i=0; i<4; i++){
-	year = year - i;
-	let condition =
-		i != 3
-			? {
-					date: {
-						$gte: new Date(year, 0, 1),
-						$lt: new Date(year + 1, 0, 1),
-					},
-			  }
-			: {
-					date: {
-						$lt: new Date(year + 1, 0, 1),
-					},
-			  };
-	Photo.find(condition, function (err, photo) {
+	Photo.find(function (err, photo) {
 		photo.sort(function (a, b) {
-			if (a.date < b.date) {
+			if (a.date > b.date) {
 				return -1;
 			}
 			return 1;
 		});
-		// res.render('photo', { photos: photo })
-		photos.push(photo);
+		res.render('photo', { photos: photo });
 	});
-	// }
-	res.render('photo', { photos: photos });
 });
 
 router.get('/detail/:id', function (req, res, next) {
