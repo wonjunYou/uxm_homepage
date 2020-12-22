@@ -6,23 +6,38 @@ block content
     main.container
       nav.sub_menu
         ul
-          li
-            a.on(href="#") 2020
-          li
-            a(href="#") 2019
-          li
-            a(href="#") 2018
-          li
-            a(href="#") 이전
+          li.on 2020
+          li 2019
+          li 2018
+          li 이전
       section.content
-        each p in photos
-          ul.thumbnail
-            each photo in p
-              li
+        ul.thumbnail
+          - year = new Date().getFullYear();
+          each photo in photos
+            - if (photo.date.getFullYear()==year)
+              li.year_1
                 a(href="/photo/detail/"+photo._id)
                   img(src=`images/${photo.images[0]}` alt=photo.description)
                   h4.thumbnail_title= photo.title
                   p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
+            - if (photo.date.getFullYear()==year-1)
+              li.year_2
+                a(href="/photo/detail/"+photo._id)
+                  img(src=`images/${photo.images[0]}` alt=photo.description)
+                  h4.thumbnail_title= photo.title
+                  p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
+            - if (photo.date.getFullYear()==year-2)
+              li.year_3
+                a(href="/photo/detail/"+photo._id)
+                  img(src=`images/${photo.images[0]}` alt=photo.description)
+                  h4.thumbnail_title= photo.title
+                  p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`
+            - if (photo.date.getFullYear()<year-2)
+              li.year_4
+                a(href="/photo/detail/"+photo._id)
+                  img(src=`images/${photo.images[0]}` alt=photo.description)
+                  h4.thumbnail_title= photo.title
+                  p.thumbnail_date= `${photo.date.getFullYear()}. ${(photo.date.getMonth()+1).toString().padStart(2,"0")}. ${photo.date.getDate().toString().padStart(2,"0")}`  
       if currentUser
         section.btn_box.admin
           button.add_btn(onclick="location.href='/photo/upload'") 사진추가

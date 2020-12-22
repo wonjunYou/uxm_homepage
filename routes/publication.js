@@ -17,29 +17,6 @@ const upload = multer({ storage: storage });
 
 // get/post
 router.get('/', function (req, res, next) {
-	// const categories = [
-	// 	'international_journal',
-	// 	'international_conference',
-	// 	'domestic_journal',
-	// 	'domestic_conference',
-	// ];
-	// let pub_list = [];
-	// for (category of categories) {
-	// 	Publication.find({ category: category }, function (err, publication) {
-	// 		pub_list.push(publication);
-	// 	});
-	// }
-	// res.render('publication', { pub_list: pub_list });
-
-	// let pub;
-	// Publication.find(
-	// 	{ category: 'international_journal' },
-	// 	function (err, publication) {
-	// 		pub = publication;
-	// 	}
-	// );
-	// res.render('publication', { publications: pub });
-
 	Publication.find(function (err, pub) {
 		pub.sort(function (a, b) {
 			if (a.category > b.category) {

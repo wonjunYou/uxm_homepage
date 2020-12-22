@@ -9,9 +9,14 @@ $(document).ready(function () {
 		},
 	});
 	// sub menu
-	$('.sub_menu > 	ul > li > a').click(function () {
+	$('[class^="year_"]').css({ display: 'none' });
+	$('.year_1').css({ display: '' });
+	$('.sub_menu > 	ul > li').click(function () {
 		$('.on').removeClass('on');
 		$(this).addClass('on');
+		$('[class^="year_"]').hide();
+		let class_name = '.year_' + ($(this).index() + 1);
+		$(class_name).css({ display: '' });
 	});
 	const input_img = document.getElementById('input_img');
 	const preview_container = document.getElementById('img_preview');

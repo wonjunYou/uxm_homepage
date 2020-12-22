@@ -3915,9 +3915,9 @@ summary {
 	border: none;
 }
 
-.p_content tbody tr.:nth-child(2n+1){
+/* .p_content tbody tr:nth-child(2n+1){
 	background-color: rgba(128,128,128,0.2);
-}
+} */
 /* .pub_tr2, .pub_tr3, .pub_tr4 {
 	display: none;
 } */
@@ -3969,10 +3969,10 @@ summary {
 	.popup-gallery .image {
 		flex:98%;
 	}
-	.sub_menu ul li a,
+	/* .sub_menu ul li a,
 	.pub_sub_menu ul li a {
 		font-size:0.8em;
-	}
+	} */
 }
 
 /* admin */
