@@ -1,23 +1,19 @@
 var express = require('express');
+const notice = require('../models/notice');
 var router = express.Router();
 
 var Notice = require('../models/notice');
 
-
-// const multer = require('multer');
-// const storage = multer.diskStorage({
-// 	destination: function (req, file, cb) {
-// 		cb(null, './public/uploads/');
-// 	},
-// 	filename: function (req, file, cb) {
-// 		cb(null, `${req.body.title}`);
-// 	},
-// });
-// const upload = multer({ storage: storage });
-
 router.get('/', function(req, res, next) {
+	Notice.find({},function (err, notice){  
+		res.render('notice',{title:"Notice",notice:notice, page:-1});
+		});
+  });
+
+router.get('/page/:page', function(req, res, next) {
+  var page = req.params.page;
   Notice.find({},function (err, notice){  
-  res.render('notice',{title:"Notice",notice:notice});
+  res.render('notice',{title:"Notice",notice:notice,page:page});
   });
 });
 
