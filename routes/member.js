@@ -51,7 +51,7 @@ router.post('/member_up',upload.single('input_img'),function(req,res){
    }
  });
 });
-
+//수정 & 삭제
 
 
 module.exports = router;
