@@ -3188,7 +3188,10 @@ footer ul{
 .memberName {
 	font-weight: bold;
 }
-
+.mem_img {
+	width: 150px;
+	height: 150px;
+}
 /* intro */
 .slideshow-container {
   background-position: top;
