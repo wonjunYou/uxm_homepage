@@ -4,7 +4,6 @@ var router = express.Router();
 const Publication = require('../models/publication');
 // for file upload
 const multer = require('multer');
-const publication = require('../models/publication');
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, './public/uploads/');
