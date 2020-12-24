@@ -4,33 +4,83 @@ block headtitle
 block content
   .wrapper
     #main.container
-      header.memberTitle
-        h2 Professor
-        br
-      .row.features
-        section.col-4.col-12-narrower.featrue
-          img.memberImage(src="/images/professorK.jpg" alt='Professor')
-        section.col-8.col-12-narrower.featrue
-          h3.memberName KIM, Sang-Kyun
-          br
-          p &#xC9C0;&#xB3C4;&#xAD50;&#xC218; &#xAE40;&#xC0C1;&#xADE0; (Tel. 031)330-6443
-          p &#xC18C;&#xC18D;: &#xBA85;&#xC9C0;&#xB300;&#xD559;&#xAD50; &#xC735;&#xD569;&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4;&#xD559;&#xBD80;
-          p &#xC9C1;&#xC704;(&#xC9C1;&#xAE09;): &#xC9C0;&#xB3C4;&#xAD50;&#xC218;
-          p &#xC774;&#xBA54;&#xC77C;: goldmunt@gmail.com
-      br
-      br
-      .memberTitle
-        h2 Students
-      br
-      .row.features
-        section.col-4.col-12-narrower.featrue
-          img.memberImage(src="/images/dojinYou.jpg" alt='Professor')
-        section.col-8.col-12-narrower.featrue
-          h3.memberName You, dojin
-          br
-          p &#xC18C;&#xC18D;: &#xBA85;&#xC9C0;&#xB300;&#xD559;&#xAD50; &#xC735;&#xD569;&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4;&#xD559;&#xBD80;
-          p &#xC9C1;&#xC704;(&#xC9C1;&#xAE09;): &#xD559;&#xBD80;&#xC5F0;&#xAD6C;&#xC0DD;
-          p &#xC774;&#xBA54;&#xC77C;: dojin@gmail.com
+      - rank_IntToString = {"0":"지도교수","1":"박사과정","2":"석사과정","3":"학부연구생"};
+      - preRank = -1
+      each member in members
+        - if (member.rank == "0")
+          - if (preRank != "0")
+            header.memberTitle
+              h2= Professor
+            - preRank = 0;
+          .row.features
+            section.col-4.col-12-narrower.feature
+              img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
+            section.col-8.col-12-narrower.feature
+              h3.memberName= member.name_en
+              p= `지도교수 ${member.name_kr} (Tel. 031)330-6443`
+              p= `소속 : ${member.affiliation}`
+              p= `직위 : ${rank_IntToString[member.rank]}`
+              p= `이메일 : ${member.email}`
+        - if (member.rank == "1")
+          - if (preRank != "1")
+            header.memberTitle
+              h2= Ph.D
+            - preRank = 1;
+          .row.features
+            section.col-4.col-12-narrower.feature
+              img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
+            section.col-8.col-12-narrower.feature
+              h3.memberName= member.name_en
+              p= `소속 : ${member.affiliation}`
+              p= `직위 : ${rank_IntToString[member.rank]}`
+              p= `이메일 : ${member.email}`
+        - if (member.rank == "2")
+          - if (preRank != "2")
+            header.memberTitle
+              h2= Master
+            - preRank = 2;
+          .row.features
+            section.col-4.col-12-narrower.feature
+              img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
+            section.col-8.col-12-narrower.feature
+              h3.memberName= member.name_en
+              p= `소속 : ${member.affiliation}`
+              p= `직위 : ${rank_IntToString[member.rank]}`
+              p= `이메일 : ${member.email}`
+        - if (member.rank == "3")
+          - if (preRank != "3")
+            header.memberTitle
+              h2= UnderGraduate
+            - preRank = 3;
+          .row.features
+            section.col-4.col-12-narrower.feature
+              img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
+            section.col-8.col-12-narrower.feature
+              h3.memberName= member.name_en
+              p= `소속 : ${member.affiliation}`
+              p= `직위 : ${rank_IntToString[member.rank]}`
+              p= `이메일 : ${member.email}`
+      //- header.memberTitle
+      //-   h2 Professor
+      //- .row.features
+      //-   section.col-4.col-12-narrower.feature
+      //-     img.memberImage(src="/images/professorK.jpg" alt='Professor')
+      //-   section.col-8.col-12-narrower.feature
+      //-     h3.memberName KIM, Sang-Kyun
+      //-     p &#xC9C0;&#xB3C4;&#xAD50;&#xC218; &#xAE40;&#xC0C1;&#xADE0; (Tel. 031)330-6443
+      //-     p &#xC18C;&#xC18D;: &#xBA85;&#xC9C0;&#xB300;&#xD559;&#xAD50; &#xC735;&#xD569;&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4;&#xD559;&#xBD80;
+      //-     p &#xC9C1;&#xC704;(&#xC9C1;&#xAE09;): &#xC9C0;&#xB3C4;&#xAD50;&#xC218;
+      //-     p &#xC774;&#xBA54;&#xC77C;: goldmunt@gmail.com
+      //- .memberTitle
+      //-   h2 Students
+      //- .row.features
+      //-   section.col-4.col-12-narrower.feature
+      //-     img.memberImage(src="/images/dojinYou.jpg" alt='Professor')
+      //-   section.col-8.col-12-narrower.feature
+      //-     h3.memberName You, dojin
+      //-     p &#xC18C;&#xC18D;: &#xBA85;&#xC9C0;&#xB300;&#xD559;&#xAD50; &#xC735;&#xD569;&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4;&#xD559;&#xBD80;
+      //-     p &#xC9C1;&#xC704;(&#xC9C1;&#xAE09;): &#xD559;&#xBD80;&#xC5F0;&#xAD6C;&#xC0DD;
+      //-     p &#xC774;&#xBA54;&#xC77C;: dojin@gmail.com
       if currentUser
         section.btn_box.admin
           button.btn(onclick="location.href='/member/upload'") 멤버 추가
