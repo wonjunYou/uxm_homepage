@@ -1,0 +1,38 @@
+extends layout
+
+block headtitle
+  h2 members
+
+block content
+  .wrapper
+    main.container
+      section.content
+        form(action='/member/member_up' method="post" enctype="multipart/form-data")
+          h2.form_title 멤버 추가
+          br
+          .form_item
+            label(for="selected_rank" class="form_label") Rank(직급)
+            select(name="selected_rank" class="form_select" id="selected_rank")
+              option(value='Professor' selected=true) Professor
+              option(value='Ph.D') Ph.D 
+              option(value='master') master
+              option(value='underGraduate') underGraduate
+          .form_item
+            label(for="input_name_en" class="form_label") 영문 이름
+            input(type="text", name="input_name_en" class="form_input" id="input_name_en" placeholder="Kim, Sang-Kyun")
+          .form_item
+            label(for="input_name_kr" class="form_label") 한글 이름
+            input(type="text", name="input_name_kr" class="form_input" id="input_name_en" placeholder="김상균")
+          .form_item
+            label(for="input_affiliation" class="form_label") 소속
+            input(type="text" name="input_affiliation" class="form_input" id="input_affiliation" value="명지대학교 융합소프트웨어학부") 
+          .form_item
+            label(for="input_main_research" class="form_label") 주 연구(관심)분야
+            input(type="text" name="input_main_research" class="form_input" id="input_main_research")
+          .form_item
+            label(for="input_img" class="form_label") 본인 사진 등록(PNG,JPG)
+            input(type="file" name="input_img" class="form_img" id="input_img" accept=".jpg, .jpeg, .png")
+            .img_preview#img_preview
+              span.img_preview_default_text Image Preview
+          .form_item
+            button.form_btn(type="submit") 추가하기

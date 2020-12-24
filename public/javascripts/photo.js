@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 				preview_default_text.style.display = 'none';
 				let preview_img = document.createElement('img');
-				preview_img.setAttribute('class', 'img_preveiw_img');
+				preview_img.setAttribute('class', 'img_preview_img');
 				preview_img.style.display = 'block';
 				preview_img.style.width = '150px';
 				preview_img.style.height = '150px';
