@@ -16,12 +16,15 @@ const upload = multer({ storage: storage });
 
 // get/post
 router.get('/', function (req, res, next) {
-	Publication.find(
-		{ category: 'international_journal' },
-		function (err, publication) {
-			res.render('publication', { publications: publication });
-		}
-	);
+	Publication.find(function (err, pub) {
+		pub.sort(function (a, b) {
+			if (a.category > b.category) {
+				return -1;
+			}
+			return 1;
+		});
+		res.render('publication', { publications: pub });
+	});
 });
 
 router.get('/detail/:id', function (req, res, next) {
@@ -37,7 +40,6 @@ router.get('/upload', function (req, res, next) {
 router.post('/pub_upload', upload.single('input_file'), function (req, res) {
 	var publication = new Publication();
 	publication.category = req.body.select_category;
-	console.log(`category = ${req.body.select_category}`);
 	publication.date = req.body.input_date;
 	publication.author = req.body.input_author;
 	publication.title_kr = req.body.input_title_kr;

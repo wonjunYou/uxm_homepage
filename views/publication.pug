@@ -4,16 +4,12 @@ block headtitle
 block content
   .wrapper
     main.container
-      nav.sub_menu
+      nav.pub_sub_menu
         ul
-          li
-            a.on(href="#") 해외학술지
-          li
-            a(href="#") 해외학회발표
-          li
-            a(href="#") 국내학술지
-          li
-            a(href="#") 국내학회발표
+          li.on(href="#") 해외학술지
+          li 해외학회발표
+          li 국내학술지
+          li 국내학회발표
       section.content
         table.p_content
           thead
@@ -21,14 +17,41 @@ block content
               th Author
               th Title
               th Journal/Confernce
+              th
           tbody
-            each publicaion in publications
-              tr
-                td= publicaion.author
-                td= publicaion.title_kr
-                td= publicaion.journal
-                  a(href='/publication/detail/'+publicaion._id)
-                    i.fas.fa-info-circle
+            each publication in publications
+              - if (publication.category == 'international_journal')
+                tr.pub_tr1
+                  td= publication.author
+                  td= publication.title_kr
+                  td= publication.journal
+                  td
+                    a(href='/publication/detail/'+publication._id)
+                      i.fas.fa-info-circle
+              - if (publication.category == 'international_conference')
+                tr.pub_tr2
+                  td= publication.author
+                  td= publication.title_kr
+                  td= publication.journal
+                  td
+                    a(href='/publication/detail/'+publication._id)
+                      i.fas.fa-info-circle
+              - if (publication.category == 'domestic_journal')
+                tr.pub_tr3
+                  td= publication.author
+                  td= publication.title_kr
+                  td= publication.journal
+                  td
+                    a(href='/publication/detail/'+publication._id)
+                      i.fas.fa-info-circle
+              - if (publication.category == 'domestic_conference')
+                tr.pub_tr4
+                  td= publication.author
+                  td= publication.title_kr
+                  td= publication.journal
+                  td
+                    a(href='/publication/detail/'+publication._id)
+                      i.fas.fa-info-circle
       if currentUser
         section.btn_box.admin
           button.btn(onclick="location.href='/publication/upload'") 논문 업로드
