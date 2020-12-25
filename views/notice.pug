@@ -1,51 +1,67 @@
 extends layout
 block headtitle
   h2 Notice
-block content
-    
 
+block content    
     .wrapper
+        -var offset = 8;
+        -var maxPage = parseInt(notice.length/offset)+1;
+        -if(page==-1){page = maxPage;}
         main.container
           section.content
-            table.p_content
-              
+            div.col-md-1
+            table.n_content.col-md-10
+              thead
+                tr
+                  th.col-md-1 No.
+                  th.col-md-6 Title
+                  th.col-md-1 Date
+                  th.col-md-1 Writer
+                  th.col-md-1 Views
               tbody
-                -for (var i=notice.length-1; i>0; i--)
-                  tr(onclick=`${notice[i].views++}`)
-                    td= i
-                    td
-                      a(href="/notice/show/"+notice[i]._id)= notice[i].title
-                    td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
-                    td= notice[i].writer
-                    td= notice[i].views
+                -for (var i = notice.length-1; i>-1; i--)
+                  -if((notice[i].numId>=(page-1)*offset) && (notice[i].numId<(page*offset)))
+                    tr(onclick=`${this.views++}`)
+                      td= notice[i].numId
+                      td
+                        h3
+                          a(href="/notice/show/"+notice[i]._id)= notice[i].title
+                      td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
+                      td= notice[i].writer
+                      td= notice[i].views
           if currentUser
             sectin.btn_box.admin
               button.add_btn(onclick="location.href='/notice/write'") 글쓰기       
-              
-          
+
+
+
           section.paging
-            
-          //-     ol.paging_btn
-          //-       li.first_page
-          //-         a(href="#")
-          //-           i.fas.fa-angle-double-left
-          //-       li.prev_page
-          //-         a(href="#")
-          //-           i.fas.fa-angle-left
-          //-       - let num = 3
-          //-       each i in [num-2,num-1,num,num+1,num+2]
-          //-         if (i != num)
-          //-           li
-          //-             a(href="")= i
-          //-         else
-          //-           li.page_on
-          //-             a(href="")= i
-          //-       li.next_page
-          //-         a(href="#")
-          //-           i.fas.fa-angle-right
-          //-       li.last_page
-          //-         a(href="#")
-          //-           i.fas.fa-angle-double-right
+              br
+              -var num = page;
+              ol.paging_btn
+                li.first_page
+                  a(href=`/notice/page/${maxPage}`)
+                    i.fas.fa-angle-double-left
+                -if(num+3<=maxPage)
+                  li.prev_page
+                    a(href=`/notice/page/${num+3}`)
+                      i.fas.fa-angle-left
+                each i in [parseInt(num)+2,parseInt(num)+1,parseInt(num),parseInt(num)-1,parseInt(num)-2]
+                  -if((i>=1)&&(i<=maxPage))
+                    -if (i != num)
+                      li
+                        a(href=`/notice/page/${i}`)= Math.abs(maxPage-i)+1
+                    -else
+                      li.page_on
+                        a(href=`/notice/page/${i}`)= Math.abs(maxPage-i)+1
+
+                -if(num-3>0)
+                  li.next_page
+                    a(href=`/notice/page/${num-3}`)
+                      i.fas.fa-angle-right
+                li.last_page
+                  a(href=`/notice/page/1`)
+                    i.fas.fa-angle-double-right
               
               
 
