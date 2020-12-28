@@ -10,23 +10,23 @@ block content
         - if (member.rank == "0")
           - if (preRank != "0")
             header.memberTitle
-              h2= Professor
+              h2 Professor
             - preRank = 0;
-          .row.features
+          .row.features.memberSect
             section.col-4.col-12-narrower.feature
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
               h3.memberName= member.name_en
               p= `지도교수 ${member.name_kr} (Tel. 031)330-6443`
               p= `소속 : ${member.affiliation}`
-              p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
+              p= `연구분야 : ${member.main_research}`
         - if (member.rank == "1")
           - if (preRank != "1")
             header.memberTitle
-              h2= Ph.D
+              h2 Ph.D
             - preRank = 1;
-          .row.features
+          .row.features.memberSect
             section.col-4.col-12-narrower.feature
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
@@ -34,12 +34,13 @@ block content
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
+              p= `연구분야 : ${member.main_research}`
         - if (member.rank == "2")
           - if (preRank != "2")
             header.memberTitle
-              h2= Master
+              h2 Master
             - preRank = 2;
-          .row.features
+          .row.features.memberSect
             section.col-4.col-12-narrower.feature
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
@@ -47,12 +48,13 @@ block content
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
+              p= `연구분야 : ${member.main_research}`
         - if (member.rank == "3")
           - if (preRank != "3")
             header.memberTitle
-              h2= UnderGraduate
+              h2 UnderGraduate
             - preRank = 3;
-          .row.features
+          .row.features.memberSect
             section.col-4.col-12-narrower.feature
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
@@ -60,9 +62,10 @@ block content
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
+              p= `연구분야 : ${member.main_research}`
       //- header.memberTitle
       //-   h2 Professor
-      //- .row.features
+      //- .row.features.memberSect
       //-   section.col-4.col-12-narrower.feature
       //-     img.memberImage(src="/images/professorK.jpg" alt='Professor')
       //-   section.col-8.col-12-narrower.feature
@@ -73,7 +76,7 @@ block content
       //-     p &#xC774;&#xBA54;&#xC77C;: goldmunt@gmail.com
       //- .memberTitle
       //-   h2 Students
-      //- .row.features
+      //- .row.features.memberSect
       //-   section.col-4.col-12-narrower.feature
       //-     img.memberImage(src="/images/dojinYou.jpg" alt='Professor')
       //-   section.col-8.col-12-narrower.feature
