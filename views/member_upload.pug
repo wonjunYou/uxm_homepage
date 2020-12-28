@@ -30,8 +30,11 @@ block content
             label(for="input_main_research" class="form_label") 주 연구(관심)분야
             input(type="text" name="input_main_research" class="form_input" id="input_main_research")
           .form_item
+            label(for="input_email" class="form_label") 이메일
+            input(type="text" name="input_email" class="form_input" id="input_email" placeholder="abc@mju.ac.kr")
+          .form_item
             label(for="input_img" class="form_label") 본인 사진 등록(PNG,JPG)
-            input(type="file" name="input_img" class="form_img" id="input_img" accept=".jpg, .jpeg, .png")
+            input(type="file" name="input_img" class="form_img" id="input_img" accept="image/*")
             .img_preview#img_preview
               span.img_preview_default_text Image Preview
           .form_item

@@ -5,15 +5,18 @@ var path = require('path');
 
 const multer = require('multer');
 const Member = require('../models/member');
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
 		cb(null, './public/images/');
 	},
 	filename: function (req, file, cb) {
-		cb(null, `${req.body.name_en}.jpg`);
+		cb(null, `${req.body.input_name_en}.jpg`);
 	},
 });
 var upload = multer({ storage: storage });
+
+var rankObj = {"Professor":"0", "Ph.D":"1", "master":"2","underGraduate":"3"};
+
 
 router.get('/', function (req, res, next) {
 	Member.find(function (err, mem) {
@@ -36,27 +39,21 @@ router.get('/upload', function (req, res, next) {
 //upload
 router.post('/member_up', upload.single('input_img'), function (req, res) {
 	var members = new Member();
-	console.log(__dirname);
-	var memberObj = {
-		rank: req.body.selected_rank,
-		name_en: req.body.input_name_en,
-		name_kr: req.body.input_name_kr,
-		affiliation: req.body.input_affiliation,
-		main_research: req.body.input_main_research,
-		img: {
-			// 여기 path가 잘못 된 것 같은데,,
-			data: fs.readFileSync(path.join(__dirname + '/../public/images/')),
-			contentType: 'image/*',
-		},
-	};
-	members.create(memberObj, function (err, item) {
+  members.rank = rankObj[req.body.selected_rank];
+  members.name_en = req.body.input_name_en;
+  members.name_kr = req.body.input_name_kr;
+  members.affiliation = req.body.input_affiliation;
+  members.main_research = req.body.input_main_research;
+  members.email = req.body.input_email;
+  members.img = req.file.filename;
+  members.save(function (err) {
 		if (err) {
 			console.log(err);
-		} else {
-			res.redirect('/member');
 		}
+		res.redirect('/member');
 	});
 });
+
 //수정 & 삭제
 
 module.exports = router;
