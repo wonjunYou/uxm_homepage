@@ -29,7 +29,6 @@ router.get('/write', function (req, res, next) {
 	res.render('notice_write');
 });
 
-
 router.post('/notice/write',function(req, res){
   var notice= new Notice();
   notice.title = req.body.title;

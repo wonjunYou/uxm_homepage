@@ -17,6 +17,11 @@ block content
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
               h3.memberName= member.name_en
+              if currentUser
+                a(href=`/member/edit/${member._id}` class="icon")
+                  img(src="/images/edit.png" id="iconImg" style="cursor:pointer;")
+                a(href=`/member/delete/${member._id}` class="icon")
+                  img(src="/images/delete.png" id="iconImg" style="cursor:pointer;")
               p= `지도교수 ${member.name_kr} (Tel. 031)330-6443`
               p= `소속 : ${member.affiliation}`
               p= `이메일 : ${member.email}`
@@ -31,6 +36,11 @@ block content
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
               h3.memberName= member.name_en
+              if currentUser
+                a(href=`/member/edit/${member._id}` class="icon")
+                  img(src="/images/edit.png" id="iconImg" style="cursor:pointer;")
+                a(href=`/member/delete/${member._id}` class="icon")
+                  img(src="/images/delete.png" id="iconImg" style="cursor:pointer;")
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
@@ -45,6 +55,11 @@ block content
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
               h3.memberName= member.name_en
+              if currentUser
+                a(href=`/member/edit/${member._id}` class="icon")
+                  img(src="/images/edit.png" id="iconImg" style="cursor:pointer;")
+                a(href=`/member/delete/${member._id}` class="icon")
+                  img(src="/images/delete.png" id="iconImg" style="cursor:pointer;")
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`
@@ -59,6 +74,11 @@ block content
               img.mem_img(src=`/images/${member.img}` alter=`${rank_IntToString[member.rank]} ${member.name_kr}`)
             section.col-8.col-12-narrower.feature
               h3.memberName= member.name_en
+              if currentUser
+                a(href=`/member/edit/${member._id}` class="icon")
+                  img(src="/images/edit.png" id="iconImg" style="cursor:pointer;")
+                a(href=`/member/delete/${member._id}` class="icon")
+                  img(src="/images/delete.png" id="iconImg" style="cursor:pointer;")
               p= `소속 : ${member.affiliation}`
               p= `직위 : ${rank_IntToString[member.rank]}`
               p= `이메일 : ${member.email}`

@@ -28,8 +28,6 @@ router.get('/', function (req, res, next) {
 		});
 		res.render('member', { members: mem });
 	});
-	// //불러오는것 짜야함
-	// res.render('member', { title: 'Express' });
 });
 
 router.get('/upload', function (req, res, next) {
@@ -55,5 +53,51 @@ router.post('/member_up', upload.single('input_img'), function (req, res) {
 });
 
 //수정 & 삭제
+router.get('/edit/:id', function (req, res) {
+	Member.findOne({ _id: req.params.id }, function (err, member) {
+		if (err) {
+			return res.json(err);
+		}
+		res.render('member_update',{ member: member });
+	});
+});
+
+router.post('/edit/:id', upload.single('input_img'), function(req,res){
+  var members = new Member({
+    _id : req.params.id,
+    rank : rankObj[req.body.selected_rank],
+    name_en : req.body.input_name_en,
+    name_kr : req.body.input_name_kr,
+    affiliation : req.body.input_affiliation,
+    main_research : req.body.input_main_research,
+    email : req.body.input_email,
+    img : req.file.filename
+  });
+  Member.updateOne(
+    {_id: req.params.id},
+    members,
+    function(err){
+      if(err){
+        return res.json(err);
+      }
+      res.redirect('/member')
+    }
+  );
+});
+
+router.get('/delete/:id', function (req, res) {
+	var fs = require('fs');
+	Member.findOne({ _id: req.params.id }, function (err, mem) {
+		fs.unlink(`public/images/${mem.name_en}.jpg`, function (err) {
+      if (err) {
+        return res.json(err);
+      }
+    });
+	});
+	Member.deleteOne({ _id: req.params.id }, function (err, mem) {
+		if (err) return res.json(err);
+		res.redirect('/member');
+	});
+});
 
 module.exports = router;
