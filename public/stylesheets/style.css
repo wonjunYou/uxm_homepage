@@ -3187,6 +3187,7 @@ footer ul{
 }
 
 .memberName {
+  display: inline-block;
   font-weight: bold;
   margin-top:0.2em;
   margin-bottom: 1em;
@@ -3199,6 +3200,16 @@ footer ul{
 }
 .memberSect{
   margin-bottom: 3em;
+}
+.icon{
+  border-bottom: 1px solid white;
+  margin-left:0.3em;
+}
+#iconImg{
+  margin-left: 0.25em;
+  margin-bottom: 0.15em;
+  width: 16px;
+  height: 16px;
 }
 /* intro */
 .slideshow-container {
