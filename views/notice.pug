@@ -4,9 +4,10 @@ block headtitle
 
 block content    
     .wrapper
-        -var offset = 8;
+        -var offset = 11;
         -var maxPage = parseInt(notice.length/offset)+1;
         -if(page==-1){page = maxPage;}
+        -var p = Math.abs(maxPage-page);
         main.container
           section.content
             div.col-md-1
@@ -19,16 +20,28 @@ block content
                   th.col-md-1 Writer
                   th.col-md-1 Views
               tbody
+                //- -for (var i = notice.length-1; i>-1; i--)
+                //-   -if((notice[i].numId>=(page-1)*offset) && (notice[i].numId<(page*offset)))
+                //-     tr(onclick=`${this.views++}`)
+                //-       td= notice[i].numId
+                //-       td
+                //-         h3
+                //-           a(href="/notice/show/"+notice[i]._id)= notice[i].title
+                //-       td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
+                //-       td= notice[i].writer
+                //-       td= notice[i].views
+
                 -for (var i = notice.length-1; i>-1; i--)
-                  -if((notice[i].numId>=(page-1)*offset) && (notice[i].numId<(page*offset)))
+                  -if((i<notice.length-(p*offset)+1)&&(i>notice.length-((p+1)*offset)))
                     tr(onclick=`${this.views++}`)
-                      td= notice[i].numId
+                      td= i+1
                       td
                         h3
                           a(href="/notice/show/"+notice[i]._id)= notice[i].title
                       td= `${notice[i].date.getYear()+1900}-${notice[i].date.getMonth()+1}-${notice[i].date.getDate()}`
                       td= notice[i].writer
                       td= notice[i].views
+                  
           if currentUser
             sectin.btn_box.admin
               button.add_btn(onclick="location.href='/notice/write'") 글쓰기       
